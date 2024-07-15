@@ -49,8 +49,8 @@
 	        	<li class="nav-item"><a href="about" class="nav-link">About</a></li>
 	        	<li class="nav-item"><a href="vet" class="nav-link">Veterinarian</a></li>
 	        	<li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-		        <li class="nav-item active" th:if="${account == null}"><a href="login" class="nav-link">Login</a></li>
-		        <li class="nav-item" th:if="${account == null}"><a href="register" class="nav-link">Register</a></li>
+		        <li class="nav-item" th:if="${account == null}"><a href="login" class="nav-link">Login</a></li>
+		        <li class="nav-item active" th:if="${account == null}"><a href="register" class="nav-link">Register</a></li>
 		        <li class="nav-item" th:if="${account != null}"><a href="profile" class="nav-link">Profile</a></li>
 	        </ul>
 	      </div>
@@ -62,8 +62,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home">Home<i class="ion-ios-arrow-forward"></i></a></span> </p>
-            <h1 class="mb-0 bread">Login</h1>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home">Home<i class="ion-ios-arrow-forward"></i></a></span></p>
+            <h1 class="mb-0 bread">Register</h1>
           </div>
         </div>
       </div>
@@ -73,7 +73,7 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center mb-5">
-						<h2 class="heading-section">Login</h2>
+						<h2 class="heading-section">Register</h2>
 					</div>
 				</div>
 				<div class="row justify-content-center">
@@ -84,21 +84,33 @@
 									<div class="contact-wrap w-100 p-md-5 p-4">
 										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
 											<div class="row">
-												<div class="col-md-12">
+												<div class="col-md-6">
 													<div class="form-group">
-														<label class="label" for="subject">Email</label>
+														<label class="label" for="name">Full Name</label>
+														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+													</div>
+												</div>
+												<div class="col-md-6"> 
+													<div class="form-group">
+														<label class="label" for="email">Email</label>
 														<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="#">Password</label>
+														<label class="label" for="subject">Password</label>
 														<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="submit" value="Login" class="btn btn-primary">
+														<label class="label" for="subject">Confirm Password</label>
+														<input type="password" class="form-control" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="Register" class="btn btn-primary">
 														<div class="submitting"></div>
 													</div>
 												</div>
