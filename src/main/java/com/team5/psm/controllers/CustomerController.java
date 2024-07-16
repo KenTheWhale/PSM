@@ -33,12 +33,14 @@ public class CustomerController {
 	}
 
 	@GetMapping("/register")
-	public String loadRegister(RegisterRequest request, Model model) {
-		FooterHTML.setFooter(model);
+	public String loadRegister() {
 		return "register";
-		// return accountService.login(request) here.
-		// if process fail then return login page with error message variable named "error"
-		// if success, then return home page with the account
+	}
+
+	@PostMapping("/register")
+	public String register(RegisterRequest request, Model model) {
+		FooterHTML.setFooter(model);
+		return accountService.register(request, model);
 	}
 	
 	@GetMapping("/profile")
