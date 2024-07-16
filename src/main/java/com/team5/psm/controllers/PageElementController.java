@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
-public class HomeController {
+public class PageElementController {
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -40,6 +40,12 @@ public class HomeController {
 	public String services(Model model) {
 		FooterHTML.setFooter(model);
 		return "services";
+	}
+	
+	@GetMapping("/login")
+	public String login(Model model) {
+		FooterHTML.setFooter(model);
+		return "Login";
 	}
 	
 }
