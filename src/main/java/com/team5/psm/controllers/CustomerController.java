@@ -1,5 +1,7 @@
 package com.team5.psm.controllers;
 
+import com.team5.psm.services.IAccountService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,31 +9,38 @@ import org.springframework.web.bind.annotation.GetMapping;
 import com.team5.psm.consts.FooterHTML;
 import com.team5.psm.requests.LoginRequest;
 import com.team5.psm.requests.RegisterRequest;
-
-import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-@RequiredArgsConstructor
 public class CustomerController {
 
-//	private final AccountService accountService;
+	private final IAccountService accountService;
+
+	@Autowired
+	public CustomerController(IAccountService accountService) {
+		this.accountService = accountService;
+	}
 
 	@GetMapping("/login")
+	public String login() {
+		return "Login";
+	}
+
+	@PostMapping("/login")
 	public String login(LoginRequest request, Model model) {
 		FooterHTML.setFooter(model);
-		return "login";
-		// return accountService.login(request) here.
-		// if process fail then return login page with error message variable named "error"
-		// if success, then return home page with the account
+		return accountService.login(request, model);
 	}
 
 	@GetMapping("/register")
-	public String loadRegister(RegisterRequest request, Model model) {
-		FooterHTML.setFooter(model);
+	public String loadRegister() {
 		return "register";
-		// return accountService.login(request) here.
-		// if process fail then return login page with error message variable named "error"
-		// if success, then return home page with the account
+	}
+
+	@PostMapping("/register")
+	public String register(RegisterRequest request, Model model) {
+		FooterHTML.setFooter(model);
+		return accountService.register(request, model);
 	}
 	
 	@GetMapping("/profile")
