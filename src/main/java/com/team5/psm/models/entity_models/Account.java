@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column
     private Long id;
 
     @Column(nullable = false)
@@ -31,4 +32,8 @@ public class Account {
 
     @Column
     private String background;
+
+    @OneToOne(mappedBy = "account")
+    private User user;
+
 }
