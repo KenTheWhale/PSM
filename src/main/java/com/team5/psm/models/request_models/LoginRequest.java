@@ -1,4 +1,4 @@
-package com.team5.psm.requests;
+package com.team5.psm.models.request_models;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

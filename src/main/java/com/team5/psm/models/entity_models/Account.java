@@ -1,9 +1,15 @@
-package com.team5.psm.pojo;
+package com.team5.psm.models.entity_models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 @Entity
 @Table
 public class Account {
@@ -17,9 +23,8 @@ public class Account {
     @Column(nullable = false)
     private String password;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
+    @Column(nullable = false)
+    private String role;
 
     @Column
     private String avatar;
