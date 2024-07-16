@@ -57,7 +57,12 @@ public class AccountServiceImpl implements AccountService {
 			return "register";
 		}
 		
-		//check duplicated email
+		// Check duplicated email
+		if (accountRepository.existsByEmail(email)) {
+			model.addAttribute("error", "Email already exists.");
+			return "register";
+		}
+
 		Account account = Account.builder()
 				.email(email)
 				.password(password)
