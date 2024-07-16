@@ -29,7 +29,7 @@ public class CustomerController {
 	@PostMapping("/login")
 	public String login(LoginRequest request, Model model) {
 		FooterHTML.setFooter(model);
-		return accountService.login(request.getEmail(), request.getPassword(), model);
+		return accountService.login(request, model);
 	}
 
 	@GetMapping("/register")
