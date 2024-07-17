@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Builder
 public class CreateDraftBookingRequest {
 
-    private String petName;
+    private Long petId;
 
     private String spaName;
 
