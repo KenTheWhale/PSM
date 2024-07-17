@@ -23,7 +23,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @Table(name = "`service`")
-public class Service {
+public class Services {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -42,22 +42,24 @@ public class Service {
 	
 	private float price;
 	
-	@OneToMany(mappedBy = "service")
+	private Integer rating;
+	
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<Booking> bookings;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<DraftBooking> drafts;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<ServicePlan> servicePlans;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<ServiceOption> serviceOptions;

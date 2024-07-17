@@ -11,6 +11,7 @@ import com.team5.psm.repositories.AccountStatusRepo;
 import com.team5.psm.repositories.UserRepo;
 import com.team5.psm.services.AccountService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
@@ -29,7 +30,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 	private final AccountStatusRepo accountStatusRepo;
 
 	@Override
-	public String login(LoginRequest request, Model model) {
+	public String login(LoginRequest request, Model model, HttpSession session) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 
@@ -51,6 +52,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 		}
 
 		model.addAttribute("account", account);
+		session.setAttribute("account", account);
 		return "home";
 	}
 
