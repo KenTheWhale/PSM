@@ -11,9 +11,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class UpdateProfileRequest {
+public class UpdateCenterProfileRequest {
+    private Long centerId;
     private String name;
-    private String phone;
     private String address;
-    private LocalDate dob;
 }
