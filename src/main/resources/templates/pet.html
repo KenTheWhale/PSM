@@ -40,10 +40,10 @@
                     <li class="nav-item"><a href="home" class="nav-link">Home</a></li>
                     <li class="nav-item"><a href="vet" class="nav-link">Veterinarian</a></li>
                     <li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-                    <li class="nav-item" th:if="${account == null}"><a href="login" class="nav-link">Login</a></li>
-                    <li class="nav-item" th:if="${account == null}"><a href="register" class="nav-link">Register</a></li>
-                    <li class="nav-item" th:if="${account != null}"><a href="profile" class="nav-link">Profile</a></li>
-                    <li class="nav-item active" th:if="${account != null}"><a href="pet" class="nav-link">Pet</a></li>
+                    <li class="nav-item" th:if="${session.account == null}"><a href="login" class="nav-link">Login</a></li>
+                    <li class="nav-item" th:if="${session.account == null}"><a href="register" class="nav-link">Register</a></li>
+                    <li class="nav-item" th:if="${session.account != null}"><a href="profile" class="nav-link">Profile</a></li>
+                    <li class="nav-item active" th:if="${session.account != null}"><a href="pet" class="nav-link">Pet</a></li>
                 </ul>
             </div>
         </div>
