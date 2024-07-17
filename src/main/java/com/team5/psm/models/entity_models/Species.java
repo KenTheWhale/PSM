@@ -1,30 +1,35 @@
 package com.team5.psm.models.entity_models;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
+@Table(name = "`species`")
 public class Species {
-
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
-
-    @Column
-    private String name;
-
-    @OneToMany(mappedBy = "specie")
-    private List<Pet> pets;
-
+	
+	private String name;
+	
+	@OneToMany(mappedBy = "species")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Pet> pets;
 }

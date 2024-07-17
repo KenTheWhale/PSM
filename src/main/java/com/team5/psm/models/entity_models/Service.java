@@ -1,44 +1,64 @@
 package com.team5.psm.models.entity_models;
 
-import jakarta.persistence.*;
+import java.util.List;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
+import lombok.ToString;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
+@Table(name = "`service`")
 public class Service {
-
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "status_id")
-    private Service_Status status;
-
-    @ManyToOne
-    @JoinColumn(name = "center_id")
-    private Spa_Center center;
-
-    @Column
-    private String name;
-
-    @Column
-    private String description;
-
-    @Column
-    private double price;
-
-    @ManyToMany(mappedBy = "service")
-    private List<Booking> bookings;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "status_id")
+	private ServiceStatus serviceStatus;
+	
+	@ManyToOne
+	@JoinColumn(name = "center_id")
+	private SpaCenter spaCenter;
+	
+	private String name;
+	
+	private String description;
+	
+	private float price;
+	
+	@OneToMany(mappedBy = "service")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<Booking> bookings;
+	
+	@OneToMany(mappedBy = "service")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<DraftBooking> drafts;
+	
+	@OneToMany(mappedBy = "service")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<ServicePlan> servicePlans;
+	
+	@OneToMany(mappedBy = "service")
+	@ToString.Exclude
+	@EqualsAndHashCode.Exclude
+	private List<ServiceOption> serviceOptions;
 }
