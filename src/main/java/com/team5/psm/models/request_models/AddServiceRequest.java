@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ViewAllPetOfUserRequest {
-	private Long id;
+public class AddServiceRequest {
+    private Long spaId;
+    private String name;
+    private String description;
+    private float price;
 }

@@ -37,6 +37,7 @@ public class Booking {
 	@ManyToOne
 	@JoinColumn(name = "service_id")
 	private Services services;
+
 	
 	@ManyToOne
 	@JoinColumn(name = "status_id")
