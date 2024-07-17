@@ -3,6 +3,7 @@ package com.team5.psm.controllers;
 import com.team5.psm.models.request_models.ForgetPasswordRequest;
 import com.team5.psm.models.request_models.PaymentRequest;
 import com.team5.psm.services.AccountService;
+import com.team5.psm.services.PetService;
 import com.team5.psm.services.UserService;
 
 
@@ -44,8 +45,7 @@ public class CustomerController {
 	private final PaymentService paymentService;
 	private final UserService userService;
 	private final PetService petService;
-	private final SpeciesRepo speciesRepo;
-	
+  private final SpeciesRepo speciesRepo;
 	@PostMapping("/login")
 	public String login(LoginRequest request, Model model, HttpSession session) {
 		return accountService.login(request, model, session);
@@ -121,7 +121,7 @@ public class CustomerController {
 		request.setId(account.getId());
 
 		List<Pet> petList = petService.viewAllPetOfUser(request);
-		List<Species> speciesList = speciesRepo.findAll();
+List<Species> speciesList = speciesRepo.findAll();
 		model.addAttribute("petList", petList);
 		model.addAttribute("speciesList", speciesList);
 		return "pet";

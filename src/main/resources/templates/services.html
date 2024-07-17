@@ -59,13 +59,13 @@
 					<li class="nav-item"><a href="vet" class="nav-link">Veterinarian</a></li>
 					<li class="nav-item active"><a href="services"
 						class="nav-link">Services</a></li>
-					<li class="nav-item" th:if="${account == null}"><a
+					<li class="nav-item" th:if="${session.account == null}"><a
 						href="login" class="nav-link">Login</a></li>
-					<li class="nav-item" th:if="${account == null}"><a
+					<li class="nav-item" th:if="${session.account == null}"><a
 						href="register" class="nav-link">Register</a></li>
-					<li class="nav-item" th:if="${account != null}"><a
+					<li class="nav-item" th:if="${session.account != null}"><a
 						href="profile" class="nav-link">Profile</a></li>
-					<li class="nav-item" th:if="${account != null}"><a href="pet"
+					<li class="nav-item" th:if="${session.account != null}"><a href="pet"
 						class="nav-link">Pet</a></li>
 				</ul>
 			</div>
@@ -155,50 +155,14 @@
 	<section class="ftco-section bg-light">
 		<div class="container">
 			<div class="row mb-5 pb-5">
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate" th:each="service : ${serviceList}">
 					<div class="d-block services text-center">
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="flaticon-blind"></span>
 						</div>
 						<div class="media-body p-4">
-							<h3 class="heading">Dog Walking</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right.</p>
-							<a href="#"
-								class="btn-custom d-flex align-items-center justify-content-center"><span
-								class="fa fa-chevron-right"></span><i class="sr-only">Read
-									more</i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-					<div class="d-block services text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-dog-eating"></span>
-						</div>
-						<div class="media-body p-4">
-							<h3 class="heading">Pet Daycare</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right.</p>
-							<a href="#"
-								class="btn-custom d-flex align-items-center justify-content-center"><span
-								class="fa fa-chevron-right"></span><i class="sr-only">Read
-									more</i></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-					<div class="d-block services text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-grooming"></span>
-						</div>
-						<div class="media-body p-4">
-							<h3 class="heading">Pet Grooming</h3>
-							<p>Far far away, behind the word mountains, far from the
-								countries Vokalia and Consonantia, there live the blind texts.
-								Separated they live in Bookmarksgrove right.</p>
+							<h3 class="heading" th:text="${service.name}"></h3>
+							<p th:text="${service.description}"></p>
 							<a href="#"
 								class="btn-custom d-flex align-items-center justify-content-center"><span
 								class="fa fa-chevron-right"></span><i class="sr-only">Read

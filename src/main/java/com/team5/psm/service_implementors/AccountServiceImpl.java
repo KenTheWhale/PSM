@@ -46,7 +46,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 			return "login";
 		}
 
-		if (account.getAccountStatus().getStatus().equals(AccountStatus.INACTIVE)) {
+		if (account.getAccountStatus().getStatus().equals("banned")) {
 			model.addAttribute("error", "Account is banned.");
 			return "login";
 		}
