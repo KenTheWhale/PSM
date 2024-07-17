@@ -37,7 +37,7 @@ public class DraftBookingServiceImpl implements DraftBookingService {
 
         DraftBooking draftBooking = DraftBooking.builder()
                                                 .pet(pet)
-                                                .service(services)
+                                                .services(services)
                                                 .price(price)
                                                 .build();
         model.addAttribute("draftBooking", draftBooking);
@@ -58,7 +58,7 @@ public class DraftBookingServiceImpl implements DraftBookingService {
         Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
 
         draftBooking.setPet(pet);
-        draftBooking.setService(services);
+        draftBooking.setServices(services);
         draftBooking.setPrice(price);
         
         model.addAttribute("draftBooking", draftBooking);

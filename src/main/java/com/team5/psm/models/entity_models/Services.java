@@ -42,22 +42,24 @@ public class Services {
 	
 	private float price;
 	
-	@OneToMany(mappedBy = "service")
+	private Integer rating;
+	
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<Booking> bookings;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<DraftBooking> drafts;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<ServicePlan> servicePlans;
 	
-	@OneToMany(mappedBy = "service")
+	@OneToMany(mappedBy = "services")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	private List<ServiceOption> serviceOptions;

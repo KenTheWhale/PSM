@@ -31,7 +31,7 @@ public class ServicePlan {
 	
 	@ManyToOne
 	@JoinColumn(name = "service_id")
-	private Services service;
+	private Services services;
 
 	private String name;
 	
