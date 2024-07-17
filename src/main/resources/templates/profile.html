@@ -61,8 +61,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home">Home <i class="ion-ios-arrow-forward"></i></a></span></p>
-            <h1 class="mb-0 bread">Contact</h1>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="home">Home<i class="ion-ios-arrow-forward"></i></a></span></p>
+            <h1 class="mb-0 bread">Profile</h1>
           </div>
         </div>
       </div>
@@ -72,58 +72,15 @@
 			<div class="container">
 				<div class="row justify-content-center">
 					<div class="col-md-6 text-center mb-5">
-						<h2 class="heading-section">Contact Form #03</h2>
+						<h2 class="heading-section">Profile</h2>
 					</div>
 				</div>
 				<div class="row justify-content-center">
 					<div class="col-md-12">
 						<div class="wrapper">
-							<div class="row mb-5">
-								<div class="col-md-3">
-									<div class="dbox w-100 text-center">
-				        		<div class="icon d-flex align-items-center justify-content-center">
-				        			<span class="fa fa-map-marker"></span>
-				        		</div>
-				        		<div class="text">
-					            <p><span>Address:</span> 198 West 21th Street, Suite 721 New York NY 10016</p>
-					          </div>
-				          </div>
-								</div>
-								<div class="col-md-3">
-									<div class="dbox w-100 text-center">
-				        		<div class="icon d-flex align-items-center justify-content-center">
-				        			<span class="fa fa-phone"></span>
-				        		</div>
-				        		<div class="text">
-					            <p><span>Phone:</span> <a href="tel://1234567920">+ 1235 2355 98</a></p>
-					          </div>
-				          </div>
-								</div>
-								<div class="col-md-3">
-									<div class="dbox w-100 text-center">
-				        		<div class="icon d-flex align-items-center justify-content-center">
-				        			<span class="fa fa-paper-plane"></span>
-				        		</div>
-				        		<div class="text">
-					            <p><span>Email:</span> <a href="mailto:info@yoursite.com">info@yoursite.com</a></p>
-					          </div>
-				          </div>
-								</div>
-								<div class="col-md-3">
-									<div class="dbox w-100 text-center">
-				        		<div class="icon d-flex align-items-center justify-content-center">
-				        			<span class="fa fa-globe"></span>
-				        		</div>
-				        		<div class="text">
-					            <p><span>Website</span> <a href="#">yoursite.com</a></p>
-					          </div>
-				          </div>
-								</div>
-							</div>
 							<div class="row no-gutters">
 								<div class="col-md-7">
 									<div class="contact-wrap w-100 p-md-5 p-4">
-										<h3 class="mb-4">Contact Us</h3>
 										<form method="POST" id="contactForm" name="contactForm" class="contactForm">
 											<div class="row">
 												<div class="col-md-6">
@@ -134,25 +91,31 @@
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
-														<label class="label" for="email">Email Address</label>
+														<label class="label" for="email">Email</label>
 														<input type="email" class="form-control" name="email" id="email" placeholder="Email">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="subject">Subject</label>
-														<input type="text" class="form-control" name="subject" id="subject" placeholder="Subject">
+														<label class="label" for="phone">Phone</label>
+														<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<label class="label" for="#">Message</label>
-														<textarea name="message" class="form-control" id="message" cols="30" rows="4" placeholder="Message"></textarea>
+														<label class="label" for="dob">Day of birth</label>
+														<input type="text" class="form-control" name="dob" id="dob" placeholder="Day of birth">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
-														<input type="submit" value="Send Message" class="btn btn-primary">
+														<label class="label" for="address">Address</label>
+														<input type="text" class="form-control" name="address" id="address" placeholder="Address">
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="form-group">
+														<input type="submit" value="edit profile" class="btn btn-primary">
 														<div class="submitting"></div>
 													</div>
 												</div>
@@ -187,18 +150,6 @@
 						<li><a href="#" class="py-2 d-block">About</a></li>
 						<li><a href="#" class="py-2 d-block">Services</a></li>
 					</ul>
-				</div>
-				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">Have a Questions?</h2>
-					<div class="block-23 mb-3">
-						<ul>
-							<li><span class="icon fa fa-map"></span><span class="text" th:text="${address}"></span></li>
-							<li><a href="#"><span class="icon fa fa-phone"></span><span
-									class="text" th:text="${phone}"></span></a></li>
-							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-									class="text" th:text="${email}"></span></a></li>
-						</ul>
-					</div>
 				</div>
 			</div>
 			<div class="row mt-5">
@@ -238,8 +189,6 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
 
 
