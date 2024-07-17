@@ -9,6 +9,7 @@ import com.team5.psm.models.entity_models.Pet;
 import com.team5.psm.models.entity_models.Species;
 import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.AddPetRequest;
+import com.team5.psm.models.request_models.DeletePetRequest;
 import com.team5.psm.models.request_models.UpdatePetRequest;
 import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
 import com.team5.psm.repositories.AccountRepo;
@@ -81,6 +82,19 @@ public class PetServiceImpl implements PetService {
 
 	private boolean checkIfStringIsValid(String input) {
 		return input != null && !input.isEmpty();
+	}
+
+	@Override
+	public String deletePet(DeletePetRequest request, Model model) {
+		// TODO Auto-generated method stub
+		
+		Pet pet = petRepo.findById(request.getPetId()).orElse(null);
+		if(pet == null) {
+			model.addAttribute("error", "Pet not found");
+			return "pet";
+		}
+		petRepo.delete(pet);
+		return "redirect:/pet";
 	}
 
 }
