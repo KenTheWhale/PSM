@@ -1,5 +1,6 @@
 package com.team5.psm.controllers;
 
+import com.team5.psm.services.SpaCenterService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +13,12 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class PageElementController {
+
+	private final SpaCenterService centerService;
+
 	
 	private final UserService userService;
+
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -45,19 +50,18 @@ public class PageElementController {
 	public String login(Model model) {
 		FooterHTML.setFooter(model);
 		return "login";
+
 	}
-	
+
 	@GetMapping("/register")
 	public String loadRegister(Model model) {
 		FooterHTML.setFooter(model);
 		return "register";
 	}
-  
-//	@GetMapping("/pet")
-//	public String loadPet(Model model) {
-//		FooterHTML.setFooter(model);
-//		return "pet";
-//	}
 
-	
+	@GetMapping("/center-profile")
+	public String profile(Long centerId, Model model) {
+		FooterHTML.setFooter(model);
+		return centerService.getCenterProfile(centerId, model);
+	}
 }

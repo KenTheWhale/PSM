@@ -22,6 +22,9 @@ import lombok.ToString;
 @Entity
 @Table(name = "account_status")
 public class AccountStatus {
+	public static String ACTIVE = "Active";
+	public static String INACTIVE = "Inactive";
+
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

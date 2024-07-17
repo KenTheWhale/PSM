@@ -1,5 +1,4 @@
 package com.team5.psm.service_implementors;
-
 import com.team5.psm.consts.Role;
 import com.team5.psm.models.entity_models.Account;
 import com.team5.psm.models.entity_models.SpaCenter;
@@ -8,8 +7,10 @@ import com.team5.psm.repositories.AccountRepo;
 import com.team5.psm.repositories.SpaCenterRepo;
 import com.team5.psm.services.SpaCenterService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
+
+import com.team5.psm.models.request_models.UpdateCenterProfileRequest;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +36,22 @@ public class SpaCenterServiceImpl implements SpaCenterService {
 
         spaCenterRepo.save(spaCenter);
         return "home";
+    }
+    
+    @Override
+    public String getCenterProfile(Long centerId, Model model) {
+        SpaCenter spaCenter = spaCenterRepo.findById(centerId).orElse(null);
+
+        if (spaCenter == null) {
+            model.addAttribute("error", "Center not found.");
+            return "home";
+        }
+
+        model.addAttribute("spaCenter", spaCenter);
+        return "center-profile";
+    }
+    
+    private boolean checkIfStringIsValid(String input) {
+    	return input != null && !input.isEmpty();
     }
 }
