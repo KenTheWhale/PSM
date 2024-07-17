@@ -40,6 +40,6 @@ public class CustomerController {
 
 	@PostMapping("/update-profile")
 	public String updateProfile(UpdateProfileRequest request, Model model) {
-		return userService.up(request, model);
+		return userService.updateProfile(request, model);
 	}
 }
