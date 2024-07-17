@@ -43,6 +43,7 @@ public class PageElementController {
 	@GetMapping("/services")
 	public String services(Model model) {
 		FooterHTML.setFooter(model);
+		userService.loadServicePage(model);
 		return "services";
 	}
 	
