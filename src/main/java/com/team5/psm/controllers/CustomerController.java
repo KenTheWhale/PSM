@@ -26,14 +26,6 @@ public class CustomerController {
 
 	@PostMapping("/login")
 	public String login(LoginRequest request, Model model) {
-		PaymentRequest paymentRequest = new PaymentRequest();
-		paymentRequest.setAmount(1000);
-		paymentRequest.setCardNumber("4242424242424242");
-		paymentRequest.setCvv("123");
-		paymentRequest.setExpiryDate(LocalDate.of(2050, 1, 1));
-		paymentRequest.setCardHolder("John Doe");
-		paymentRequest.setZipCode("12345");
-
 		return accountService.login(request, model);
 	}
 
