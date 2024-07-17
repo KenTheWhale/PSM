@@ -24,12 +24,6 @@ public class PageElementController {
 		return "home";
 	}
 	
-	@GetMapping("/about")
-	public String about(Model model) {
-		FooterHTML.setFooter(model);
-		return "about";
-	}
-	
 	@GetMapping("/vet")
 	public String vet(Model model) {
 		FooterHTML.setFooter(model);
@@ -45,7 +39,13 @@ public class PageElementController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		FooterHTML.setFooter(model);
-		return "Login";
+		return "login";
+	}
+	
+	@GetMapping("/register")
+	public String loadRegister(Model model) {
+		FooterHTML.setFooter(model);
+		return "register";
 	}
 	
 }

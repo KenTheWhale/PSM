@@ -25,11 +25,6 @@ public class CustomerController {
 		return accountService.login(request, model);
 	}
 
-	@GetMapping("/register")
-	public String loadRegister() {
-		return "register";
-	}
-
 	@PostMapping("/register")
 	public String register(RegisterRequest request, Model model) {
 		FooterHTML.setFooter(model);
