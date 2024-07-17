@@ -9,6 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ViewAllPetOfUserRequest {
-	private Long id;
+public class CreateDraftBookingRequest {
+
+    private Long petId;
+
+    private String spaName;
+
+    private String serviceName;
+
+    private float price;
+
+
 }

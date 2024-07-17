@@ -13,7 +13,6 @@ import com.team5.psm.models.entity_models.Pet;
 import com.team5.psm.models.request_models.AddPetRequest;
 import com.team5.psm.models.request_models.UpdatePetRequest;
 import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
-import com.team5.psm.models.request_models.ViewProfileUserRequest;
 import com.team5.psm.services.PetService;
 
 import jakarta.servlet.http.HttpSession;
