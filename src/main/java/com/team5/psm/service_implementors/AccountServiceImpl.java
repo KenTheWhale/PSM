@@ -2,9 +2,11 @@ package com.team5.psm.service_implementors;
 
 import com.team5.psm.consts.Role;
 import com.team5.psm.models.entity_models.Account;
+import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.ChangePasswordRequest;
 import com.team5.psm.models.request_models.LoginRequest;
 import com.team5.psm.models.request_models.RegisterRequest;
+import com.team5.psm.repositories.UserRepo;
 import com.team5.psm.services.AccountService;
 
 import lombok.RequiredArgsConstructor;
@@ -14,11 +16,14 @@ import org.springframework.ui.Model;
 import com.team5.psm.repositories.AccountRepo;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+
 @Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
-	private final AccountRepo accountRepository;
+	private final AccountRepo accountRepo;
+	private final UserRepo userRepo;
 
 	@Override
 	public String login(LoginRequest request, Model model) {
@@ -26,14 +31,14 @@ public class AccountServiceImpl implements AccountService {
 		String password = request.getPassword();
 
 		if (!checkIfStringIsValid(email) || !checkIfStringIsValid(password)) {
-			model.addAttribute("error", "Login information is required");
+			model.addAttribute("error", "Login information is required.");
 			return "login";
 		}
 
-		Account account = accountRepository.findByEmailAndPassword(email, password).orElse(null);
+		Account account = accountRepo.findByEmailAndPassword(email, password).orElse(null);
 
 		if (account == null) {
-			model.addAttribute("error", "Email or password inc");
+			model.addAttribute("error", "Email or password incorrect.");
 			return "login";
 		}
 
@@ -47,19 +52,29 @@ public class AccountServiceImpl implements AccountService {
 		String password = request.getPassword();
 		String confirm = request.getConfirmPassword();
 		String name = request.getName();
+		String phone = request.getPhone();
+		String address = request.getAddress();
+		LocalDate dob = request.getDob();
 
-		if (!checkIfStringIsValid(email) || !checkIfStringIsValid(password) || !checkIfStringIsValid(confirm) || !checkIfStringIsValid(name)) {
+		if (!checkIfStringIsValid(email)
+				|| !checkIfStringIsValid(password)
+				|| !checkIfStringIsValid(confirm)
+				|| !checkIfStringIsValid(name)
+				|| !checkIfStringIsValid(phone)
+				|| !checkIfStringIsValid(address)
+				|| dob == null) {
 			model.addAttribute("error", "Please fill in all fields.");
 			return "register";
 		}
 
+		// Check if password and confirm password match
 		if (!password.equals(confirm)) {
-			model.addAttribute("error", "Confirmed password does not matched.");
+			model.addAttribute("error", "Confirmed password does not match.");
 			return "register";
 		}
 		
 		// Check duplicated email
-		if (accountRepository.existsByEmail(email)) {
+		if (accountRepo.existsByEmail(email)) {
 			model.addAttribute("error", "Email already exists.");
 			return "register";
 		}
@@ -69,10 +84,19 @@ public class AccountServiceImpl implements AccountService {
 				.password(password)
 				.role(Role.USER)
 				.build();
-		
-		// Create new customer entity later when the pojo and repository are available
 
-		accountRepository.save(account);
+		accountRepo.save(account);
+		
+		User user = User.builder()
+				.account(account)
+				.name(name)
+				.phone(phone)
+				.address(address)
+				.dob(dob)
+				.build();
+
+		userRepo.save(user);
+
 		return "login";
 	}
 
@@ -101,7 +125,7 @@ public class AccountServiceImpl implements AccountService {
 		}
 
 		String email = accountFromSession.getEmail();
-		Account accountFromDb = accountRepository.findByEmailAndPassword(email, oldPassword).orElse(null);
+		Account accountFromDb = accountRepo.findByEmailAndPassword(email, oldPassword).orElse(null);
 
 		if (accountFromDb == null) {
 			model.addAttribute("error", "Old password is incorrect.");
@@ -109,7 +133,7 @@ public class AccountServiceImpl implements AccountService {
 		}
 
 		accountFromDb.setPassword(newPassword);
-		accountRepository.save(accountFromDb);
+		accountRepo.save(accountFromDb);
 
 		return "profile";
 	}
