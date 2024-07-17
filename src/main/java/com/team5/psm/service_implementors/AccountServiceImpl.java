@@ -19,8 +19,6 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepo accountRepository;
-	private final AccountService accountService;
-	private final AccountRepo accountRepo;
 
 	@Override
 	public String login(LoginRequest request, Model model) {
