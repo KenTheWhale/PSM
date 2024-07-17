@@ -65,8 +65,7 @@ public class CustomerController {
             model.addAttribute("error", "User not logged in");
             return "login";
         }
-
-        Long userId = account.getUser().getId();
+       Long userId = account.getUser().getId();
 
        return userService.updateProfile(request, model, userId);
     }
