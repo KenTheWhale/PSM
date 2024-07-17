@@ -2,6 +2,7 @@ package com.team5.psm.service_implementors;
 
 import com.team5.psm.consts.Role;
 import com.team5.psm.models.entity_models.Account;
+import com.team5.psm.models.request_models.ChangePasswordRequest;
 import com.team5.psm.models.request_models.LoginRequest;
 import com.team5.psm.models.request_models.RegisterRequest;
 import com.team5.psm.services.AccountService;
@@ -18,6 +19,8 @@ import org.springframework.stereotype.Service;
 public class AccountServiceImpl implements AccountService {
 
 	private final AccountRepo accountRepository;
+	private final AccountService accountService;
+	private final AccountRepo accountRepo;
 
 	@Override
 	public String login(LoginRequest request, Model model) {
@@ -81,7 +84,39 @@ public class AccountServiceImpl implements AccountService {
         return "home";
     }
 
-    private boolean checkIfStringIsValid(String input) {
+	@Override
+	public String changePassword(ChangePasswordRequest request, Model model) {
+		String oldPassword = request.getOldPassword();
+		String newPassword = request.getNewPassword();
+
+		if (!checkIfStringIsValid(oldPassword) || !checkIfStringIsValid(newPassword)) {
+			model.addAttribute("error", "Please fill in all fields.");
+			// Change this to the correct page later
+			return "profile";
+		}
+
+		// Get account from session
+		Account accountFromSession = (Account) model.getAttribute("account");
+		if (accountFromSession == null) {
+			model.addAttribute("error", "Please login first.");
+			return "login";
+		}
+
+		String email = accountFromSession.getEmail();
+		Account accountFromDb = accountRepository.findByEmailAndPassword(email, oldPassword).orElse(null);
+
+		if (accountFromDb == null) {
+			model.addAttribute("error", "Old password is incorrect.");
+			return "profile";
+		}
+
+		accountFromDb.setPassword(newPassword);
+		accountRepository.save(accountFromDb);
+
+		return "profile";
+	}
+
+	private boolean checkIfStringIsValid(String input) {
 		return input != null && !input.isEmpty();
 	}
 }

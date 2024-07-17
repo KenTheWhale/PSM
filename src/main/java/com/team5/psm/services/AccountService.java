@@ -1,5 +1,6 @@
 package com.team5.psm.services;
 
+import com.team5.psm.models.request_models.ChangePasswordRequest;
 import org.springframework.ui.Model;
 
 import com.team5.psm.models.request_models.LoginRequest;
@@ -12,4 +13,5 @@ public interface AccountService {
     String login(LoginRequest request, Model model);
     String register(RegisterRequest request, Model model);
     String logout(Model model);
+    String changePassword(ChangePasswordRequest request, Model model);
 }
