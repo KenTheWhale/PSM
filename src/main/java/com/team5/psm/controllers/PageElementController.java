@@ -5,29 +5,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.team5.psm.consts.FooterHTML;
+import com.team5.psm.services.UserService;
 
 import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
 public class PageElementController {
+	
+	private final UserService userService;
 
 	@GetMapping("/")
 	public String home(Model model) {
 		FooterHTML.setFooter(model);
+		userService.loadHomePage(model);
 		return "home";
 	}
 	
 	@GetMapping("/home")
 	public String homeIndex(Model model) {
 		FooterHTML.setFooter(model);
+		userService.loadHomePage(model);
 		return "home";
-	}
-	
-	@GetMapping("/about")
-	public String about(Model model) {
-		FooterHTML.setFooter(model);
-		return "about";
 	}
 	
 	@GetMapping("/vet")
@@ -45,7 +44,20 @@ public class PageElementController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		FooterHTML.setFooter(model);
-		return "Login";
+		return "login";
 	}
+	
+	@GetMapping("/register")
+	public String loadRegister(Model model) {
+		FooterHTML.setFooter(model);
+		return "register";
+	}
+  
+//	@GetMapping("/pet")
+//	public String loadPet(Model model) {
+//		FooterHTML.setFooter(model);
+//		return "pet";
+//	}
+
 	
 }
