@@ -42,4 +42,14 @@ public class CustomerController {
 	public String updateProfile(UpdateProfileRequest request, Model model) {
 		return userService.updateProfile(request, model);
 	}
+
+	@PostMapping("/ban-account")
+	public String banAccount(Long accountId, Model model) {
+		return accountService.banAccount(accountId, model);
+	}
+
+	@PostMapping("/unban-account")
+	public String unbanAccount(Long accountId, Model model) {
+		return accountService.unbanAccount(accountId, model);
+	}
 }

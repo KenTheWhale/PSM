@@ -2,10 +2,12 @@ package com.team5.psm.service_implementors;
 
 import com.team5.psm.consts.Role;
 import com.team5.psm.models.entity_models.Account;
+import com.team5.psm.models.entity_models.AccountStatus;
 import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.ChangePasswordRequest;
 import com.team5.psm.models.request_models.LoginRequest;
 import com.team5.psm.models.request_models.RegisterRequest;
+import com.team5.psm.repositories.AccountStatusRepo;
 import com.team5.psm.repositories.UserRepo;
 import com.team5.psm.services.AccountService;
 
@@ -24,6 +26,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 
 	private final AccountRepo accountRepo;
 	private final UserRepo userRepo;
+	private final AccountStatusRepo accountStatusRepo;
 
 	@Override
 	public String login(LoginRequest request, Model model) {
@@ -39,6 +42,11 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 
 		if (account == null) {
 			model.addAttribute("error", "Email or password incorrect.");
+			return "login";
+		}
+
+		if (account.getAccountStatus().getStatus().equals(AccountStatus.INACTIVE)) {
+			model.addAttribute("error", "Account is banned.");
 			return "login";
 		}
 
@@ -136,5 +144,37 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 		accountRepo.save(accountFromDb);
 
 		return "profile";
+	}
+
+	private String changeAccountStatus(Long accountId, String status, Model model) {
+		Account account = accountRepo.findById(accountId).orElse(null);
+		if (account == null) {
+			model.addAttribute("error", "Account not found.");
+			// Change this to the correct page later
+			return "home";
+		}
+
+		AccountStatus accountStatus = accountStatusRepo.findByStatus(status).orElse(null);
+		if (accountStatus == null) {
+			model.addAttribute("error", "Account status not found.");
+			// Change this to the correct page later
+			return "home";
+		}
+
+		account.setAccountStatus(accountStatus);
+		accountRepo.save(account);
+
+		// Change this to the correct page later
+		return "home";
+	}
+
+	@Override
+	public String banAccount(Long accountId, Model model) {
+		return changeAccountStatus(accountId, AccountStatus.INACTIVE, model);
+	}
+
+	@Override
+	public String unbanAccount(Long accountId, Model model) {
+		return changeAccountStatus(accountId, AccountStatus.ACTIVE, model);
 	}
 }

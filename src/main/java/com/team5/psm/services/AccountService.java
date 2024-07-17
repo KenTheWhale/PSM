@@ -14,4 +14,6 @@ public interface AccountService {
     String register(RegisterRequest request, Model model);
     String logout(Model model);
     String changePassword(ChangePasswordRequest request, Model model);
+    String banAccount(Long accountId, Model model);
+    String unbanAccount(Long accountId, Model model);
 }

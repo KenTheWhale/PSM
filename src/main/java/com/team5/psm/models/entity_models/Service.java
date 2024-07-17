@@ -27,11 +27,11 @@ public class Service {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "status_id")
 	private ServiceStatus serviceStatus;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "center_id")
 	private SpaCenter spaCenter;
