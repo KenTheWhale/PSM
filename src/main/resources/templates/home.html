@@ -57,10 +57,14 @@
 					<li class="nav-item active"><a href="home" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="vet" class="nav-link">Veterinarian</a></li>
 					<li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-					<li class="nav-item" th:if="${account == null}"><a href="login" class="nav-link">Login</a></li>
-					<li class="nav-item" th:if="${account == null}"><a href="register" class="nav-link">Register</a></li>
-					<li class="nav-item" th:if="${account != null}"><a href="profile" class="nav-link">Profile</a></li>
-					<li class="nav-item" th:if="${account != null}"><a href="pet" class="nav-link">Pet</a></li>
+					<li class="nav-item" th:if="${account == null}"><a
+						href="login" class="nav-link">Login</a></li>
+					<li class="nav-item" th:if="${account == null}"><a
+						href="register" class="nav-link">Register</a></li>
+					<li class="nav-item" th:if="${account != null}"><a
+						href="profile" class="nav-link">Profile</a></li>
+					<li class="nav-item" th:if="${account != null}"><a href="pet"
+						class="nav-link">Pet</a></li>
 				</ul>
 			</div>
 		</div>
@@ -84,8 +88,10 @@
 	<section class="ftco-section bg-light ftco-no-pt ftco-intro">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate" th:each="service : ${top3Services}">
-					<div class="d-block services active text-center">
+				<div
+					class="col-md-4 d-flex align-self-stretch px-4 ftco-animate fadeInUp ftco-animated"
+					th:each="service : ${top3Services}">
+					<div class="d-block services text-center">
 						<div class="icon d-flex align-items-center justify-content-center">
 							<span class="flaticon-blind"></span>
 						</div>
@@ -99,7 +105,6 @@
 						</div>
 					</div>
 				</div>
-				
 			</div>
 		</div>
 	</section>
@@ -487,7 +492,8 @@
 					<h2 class="footer-heading">Have a Questions?</h2>
 					<div class="block-23 mb-3">
 						<ul>
-							<li><span class="icon fa fa-map"></span><span class="text" th:text="${address}"></span></li>
+							<li><span class="icon fa fa-map"></span><span class="text"
+								th:text="${address}"></span></li>
 							<li><a href="#"><span class="icon fa fa-phone"></span><span
 									class="text" th:text="${phone}"></span></a></li>
 							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
@@ -505,8 +511,8 @@
 							document.write(new Date().getFullYear());
 						</script>
 						All rights reserved | This template is made with <i
-							class="fa fa-heart" aria-hidden="true"></i> by <a
-							href="" target="_blank">Pet Spa</a>
+							class="fa fa-heart" aria-hidden="true"></i> by <a href=""
+							target="_blank">Pet Spa</a>
 					</p>
 				</div>
 			</div>
