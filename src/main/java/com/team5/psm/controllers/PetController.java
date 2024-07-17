@@ -21,22 +21,22 @@ import lombok.RequiredArgsConstructor;
 public class PetController {
 	private final PetService petService;
 
-	@GetMapping("/pet")
-	public String loadPets(Model model, HttpSession session) {
-		FooterHTML.setFooter(model);
-		Account account = (Account) session.getAttribute("account");
-		if (account == null) {
-			model.addAttribute("error", "User not logged in");
-			return "login";
-		}
-
-		ViewAllPetOfUserRequest request = new ViewAllPetOfUserRequest();
-		request.setId(account.getId());
-
-		List<Pet> petList = petService.viewAllPetOfUser(request);
-		model.addAttribute("petList", petList);
-
-		return "redirect:/pet";
-	}
+//	@GetMapping("/pet")
+//	public String loadPets(Model model, HttpSession session) {
+//		FooterHTML.setFooter(model);
+//		Account account = (Account) session.getAttribute("account");
+//		if (account == null) {
+//			model.addAttribute("error", "User not logged in");
+//			return "login";
+//		}
+//
+//		ViewAllPetOfUserRequest request = new ViewAllPetOfUserRequest();
+//		request.setId(account.getId());
+//
+//		List<Pet> petList = petService.viewAllPetOfUser(request);
+//		model.addAttribute("petList", petList);
+//
+//		return "redirect:/pet";
+//	}
 
 }
