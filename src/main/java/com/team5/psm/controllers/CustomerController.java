@@ -28,15 +28,11 @@ import com.team5.psm.models.request_models.ViewProfileUserRequest;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-
-import java.time.LocalDate;
-
 @Controller
 @RequiredArgsConstructor
 public class CustomerController {
 
 	private final AccountService accountService;
-
 	private final PaymentService paymentService;
 	private final UserService userService;
 	
@@ -58,9 +54,8 @@ public class CustomerController {
 
 	@PostMapping("checkout")
 	public String checkout(PaymentRequest request, Model model) {
-		// Do something with this url
 		String receiptUrl = paymentService.checkout(request, model);
-
+		model.addAttribute("paymentURL", receiptUrl);
 		return "home";
 	}
 

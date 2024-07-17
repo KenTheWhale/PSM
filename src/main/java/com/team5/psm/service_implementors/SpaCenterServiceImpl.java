@@ -9,7 +9,6 @@ import com.team5.psm.services.SpaCenterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 
-import com.team5.psm.models.request_models.UpdateCenterProfileRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -49,9 +48,5 @@ public class SpaCenterServiceImpl implements SpaCenterService {
 
         model.addAttribute("spaCenter", spaCenter);
         return "center-profile";
-    }
-    
-    private boolean checkIfStringIsValid(String input) {
-    	return input != null && !input.isEmpty();
     }
 }
