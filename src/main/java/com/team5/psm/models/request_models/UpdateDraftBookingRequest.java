@@ -13,7 +13,7 @@ public class UpdateDraftBookingRequest {
 
     private Long id;
 
-    private String petName;
+    private Long petId;
 
     private String spaName;
 
