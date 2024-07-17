@@ -4,6 +4,7 @@ import com.team5.psm.models.entity_models.DraftBooking;
 import com.team5.psm.models.entity_models.Pet;
 import com.team5.psm.models.entity_models.Services;
 import com.team5.psm.models.request_models.CreateDraftBookingRequest;
+import com.team5.psm.models.request_models.DeleteDraftBookingRequest;
 import com.team5.psm.models.request_models.UpdateDraftBookingRequest;
 import com.team5.psm.repositories.DraftBookingRepo;
 import com.team5.psm.repositories.PetRepo;
@@ -64,6 +65,14 @@ public class DraftBookingServiceImpl implements DraftBookingService {
         model.addAttribute("draftBooking", draftBooking);
 
         draftBookingRepo.save(draftBooking);
-        return "";
+        return "home";
     }
+
+    @Override
+    public String deleteDraftBooking(DeleteDraftBookingRequest request, Model model) {
+        model.addAttribute("msg", "check in success");
+        draftBookingRepo.deleteById(request.getId());
+        return "home";
+    }
+
 }
