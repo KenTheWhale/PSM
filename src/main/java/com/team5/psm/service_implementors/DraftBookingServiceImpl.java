@@ -26,12 +26,12 @@ public class DraftBookingServiceImpl implements DraftBookingService {
 
     @Override
     public String createDraftBooking(CreateDraftBookingRequest request, Model model) {
-        String petName = request.getPetName();
+        Long petId = request.getPetId();
         String spaName = request.getSpaName();
         String serviceName = request.getServiceName();
         float price = request.getPrice();
 
-        Pet pet = petRepo.findByName(petName).orElse(null);
+        Pet pet = petRepo.findById(petId).orElse(null);
         Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
 
         DraftBooking draftBooking = DraftBooking.builder()
@@ -47,13 +47,13 @@ public class DraftBookingServiceImpl implements DraftBookingService {
 
     @Override
     public String updateDraftBooking(UpdateDraftBookingRequest request, Model model) {
-        String petName = request.getPetName();
+        Long petId = request.getPetId();
         String spaName = request.getSpaName();
         String serviceName = request.getServiceName();
         float price = request.getPrice();
 
         DraftBooking draftBooking = draftBookingRepo.findById(request.getId()).orElse(null);
-        Pet pet = petRepo.findByName(petName).orElse(null);
+        Pet pet = petRepo.findById(petId).orElse(null);
         Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
 
         draftBooking = DraftBooking.builder()
