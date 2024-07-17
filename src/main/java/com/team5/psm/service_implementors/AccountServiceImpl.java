@@ -75,7 +75,13 @@ public class AccountServiceImpl implements AccountService {
 		return "login";
 	}
 
-	private boolean checkIfStringIsValid(String input) {
+    @Override
+    public String logout(Model model) {
+        model.addAttribute("account", null);
+        return "home";
+    }
+
+    private boolean checkIfStringIsValid(String input) {
 		return input != null && !input.isEmpty();
 	}
 }

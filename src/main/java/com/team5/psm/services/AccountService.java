@@ -11,4 +11,5 @@ import org.springframework.stereotype.Service;
 public interface AccountService {
     String login(LoginRequest request, Model model);
     String register(RegisterRequest request, Model model);
+    String logout(Model model);
 }

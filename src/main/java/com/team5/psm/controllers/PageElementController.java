@@ -45,7 +45,12 @@ public class PageElementController {
 	@GetMapping("/login")
 	public String login(Model model) {
 		FooterHTML.setFooter(model);
-		return "Login";
+		return "login";
 	}
-	
+
+	@GetMapping("/register")
+	public String loadRegister(Model model) {
+		FooterHTML.setFooter(model);
+		return "register";
+	}
 }
