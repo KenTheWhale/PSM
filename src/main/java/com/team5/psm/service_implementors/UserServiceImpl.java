@@ -1,11 +1,9 @@
 package com.team5.psm.service_implementors;
 
-import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
-import com.team5.psm.models.entity_models.Services;
 import com.team5.psm.repositories.PetRepo;
 import com.team5.psm.repositories.ServiceRepo;
 import com.team5.psm.repositories.UserRepo;
