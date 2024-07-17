@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.team5.psm.consts.FooterHTML;
@@ -26,7 +25,7 @@ public class PetController {
 	private final PetService petService;
 	private final SpeciesRepo speciesRepo;
 
-	@GetMapping("/pet")
+@GetMapping("/pet")
 	public String loadPets(Model model, HttpSession session) {
 		FooterHTML.setFooter(model);
 		Account account = (Account) session.getAttribute("account");
@@ -44,7 +43,6 @@ public class PetController {
 		model.addAttribute("speciesList", speciesList);
 		return "pet";
 	}
-
 	@PostMapping("/addPet")
     public String addPet(AddPetRequest request, Model model, HttpSession session) {
         FooterHTML.setFooter(model);

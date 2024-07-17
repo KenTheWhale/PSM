@@ -19,4 +19,6 @@ public interface UserService {
   
 	void loadHomePage(Model model);
 	
+	void loadServicePage(Model model);
+	
 }
