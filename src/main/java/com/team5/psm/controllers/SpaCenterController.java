@@ -19,5 +19,4 @@ public class SpaCenterController {
         FooterHTML.setFooter(model);
         return spaCenterService.updateSpaCenter(request, model);
     }
-
 }
