@@ -66,7 +66,7 @@ public class CustomerController {
             return "login";
         }
 
-        Long userId = account.getId();
+        Long userId = account.getUser().getId();
 
        return userService.updateProfile(request, model, userId);
     }
