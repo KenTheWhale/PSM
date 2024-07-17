@@ -59,10 +59,17 @@ public class CustomerController {
 
 	
 	@PostMapping("/profile")
-	public String updateProfile(UpdateProfileRequest request, Model model) {
-		
-		return null;	
-	}
+    public String updateProfile(UpdateProfileRequest request, Model model, HttpSession session) {
+        Account account = (Account) session.getAttribute("account");
+        if (account == null) {
+            model.addAttribute("error", "User not logged in");
+            return "login";
+        }
+
+        Long userId = account.getId();
+
+       return userService.updateProfile(request, model, userId);
+    }
 
 	
 }
