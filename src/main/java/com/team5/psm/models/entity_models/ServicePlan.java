@@ -1,16 +1,15 @@
 package com.team5.psm.models.entity_models;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,26 +23,22 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "`user`")
-public class User {
+@Table(name = "service_plan")
+public class ServicePlan {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
+	@ManyToOne
+	@JoinColumn(name = "service_id")
+	private Service service;
+
 	private String name;
 	
-	private String phone;
+	private float price;
 	
-	private LocalDate dob;
-	
-	private String address;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "account_id")
-	private Account account;
-	
-	@OneToMany(mappedBy = "user")
+	@ManyToMany(mappedBy = "plans")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private List<Pet> pets;
+	private List<ServiceOption> options;
 }

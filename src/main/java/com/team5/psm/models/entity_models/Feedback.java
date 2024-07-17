@@ -1,37 +1,37 @@
 package com.team5.psm.models.entity_models;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
-@Table
+@Table(name = "feedback")
 public class Feedback {
-
-    @Id
+	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "booking_id")
-    private Booking book;
-
-    @Column
-    private String content;
-
-    @Column
-    private LocalDateTime created_date;
-
-    @Column
-    private boolean isReport;
-
+	
+	@ManyToOne
+	@JoinColumn(name = "booking_id")
+	private Booking booking;
+	
+	private String content;
+	
+	@Column(name = "create_date")
+	private LocalDate createDate;
 }

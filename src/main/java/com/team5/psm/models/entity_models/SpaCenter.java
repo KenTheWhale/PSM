@@ -1,6 +1,5 @@
 package com.team5.psm.models.entity_models;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -24,26 +23,24 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 @Entity
-@Table(name = "`user`")
-public class User {
+@Table(name = "spa_center")
+public class SpaCenter {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-	
-	private String name;
-	
-	private String phone;
-	
-	private LocalDate dob;
-	
-	private String address;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "account_id")
 	private Account account;
 	
-	@OneToMany(mappedBy = "user")
+	private String name;
+	
+	private String address;
+	
+	private int rating;
+	
+	@OneToMany(mappedBy = "spaCenter")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private List<Pet> pets;
+	private List<Service> services;
 }
