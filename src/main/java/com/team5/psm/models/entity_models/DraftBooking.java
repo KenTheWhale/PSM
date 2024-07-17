@@ -29,7 +29,7 @@ public class DraftBooking {
 	
 	@ManyToOne
 	@JoinColumn(name = "service_id")
-	private Service service;
+	private Services service;
 	
 	private String content;
 	
