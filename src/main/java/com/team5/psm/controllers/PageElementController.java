@@ -52,11 +52,12 @@ public class PageElementController {
 		FooterHTML.setFooter(model);
 		return "register";
 	}
-	
+  
 	@GetMapping("/pet")
 	public String loadPet(Model model) {
 		FooterHTML.setFooter(model);
 		return "pet";
 	}
+
 	
 }
