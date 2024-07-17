@@ -28,7 +28,6 @@ public class PetServiceImpl implements PetService {
 	private final SpeciesRepo speciesRepo;
 
 
-	private final AccountRepo accountRepo;
 
 
 	@Override

@@ -1,5 +1,7 @@
 package com.team5.psm.models.entity_models;
 
+import java.time.LocalDate;
+
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,7 +9,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +29,9 @@ public class Account {
     private String avatar;
 
     private String background;
+    
+    @Column(name = "create_date")
+    private LocalDate createdAt;
     
     @ManyToOne
     @JoinColumn(name = "status_id")
