@@ -29,7 +29,7 @@ public class ServiceOption {
 	
 	@ManyToOne
 	@JoinColumn(name = "service_id")
-	private Service service;
+	private Services services;
 	
 	private String name;
 	

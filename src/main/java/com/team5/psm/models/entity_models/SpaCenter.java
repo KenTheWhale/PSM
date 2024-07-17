@@ -42,5 +42,5 @@ public class SpaCenter {
 	@OneToMany(mappedBy = "spaCenter")
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
-	private List<Service> services;
+	private List<Services> services;
 }
