@@ -60,6 +60,7 @@
 					<li class="nav-item" th:if="${account == null}"><a href="login" class="nav-link">Login</a></li>
 					<li class="nav-item" th:if="${account == null}"><a href="register" class="nav-link">Register</a></li>
 					<li class="nav-item" th:if="${account != null}"><a href="profile" class="nav-link">Profile</a></li>
+					<li class="nav-item" th:if="${account != null}"><a href="pet" class="nav-link">Pet</a></li>
 				</ul>
 			</div>
 		</div>
@@ -173,21 +174,10 @@
 					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 text-center">
 						<div class="text">
-							<strong class="number" data-number="50">0</strong>
+							<strong class="number" data-number="${userCount}">0</strong>
 						</div>
 						<div class="text">
-							<span>Customer</span>
-						</div>
-					</div>
-				</div>
-				<div
-					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
-					<div class="block-18 text-center">
-						<div class="text">
-							<strong class="number" data-number="8500">0</strong>
-						</div>
-						<div class="text">
-							<span>Professionals</span>
+							<span>User</span>
 						</div>
 					</div>
 				</div>
@@ -195,10 +185,10 @@
 					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 text-center">
 						<div class="text">
-							<strong class="number" data-number="20">0</strong>
+							<strong class="number" data-number="100">0</strong>
 						</div>
 						<div class="text">
-							<span>Products</span>
+							<span>Veterinarian</span>
 						</div>
 					</div>
 				</div>
@@ -206,7 +196,18 @@
 					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
 					<div class="block-18 text-center">
 						<div class="text">
-							<strong class="number" data-number="50">0</strong>
+							<strong class="number" data-number="${serviceCount}">0</strong>
+						</div>
+						<div class="text">
+							<span>Services</span>
+						</div>
+					</div>
+				</div>
+				<div
+					class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
+					<div class="block-18 text-center">
+						<div class="text">
+							<strong class="number" data-number="${petCount}">0</strong>
 						</div>
 						<div class="text">
 							<span>Pets Hosted</span>

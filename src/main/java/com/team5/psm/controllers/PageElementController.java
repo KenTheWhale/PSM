@@ -18,13 +18,14 @@ public class PageElementController {
 	@GetMapping("/")
 	public String home(Model model) {
 		FooterHTML.setFooter(model);
-		model.addAttribute("top3Services", userService.loadTop3Service());
+		userService.loadHomePage(model);
 		return "home";
 	}
 	
 	@GetMapping("/home")
 	public String homeIndex(Model model) {
 		FooterHTML.setFooter(model);
+		userService.loadHomePage(model);
 		return "home";
 	}
 	
