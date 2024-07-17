@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ViewAllPetOfUserRequest {
-	private Long id;
+public class UpdateCenterRequest {
+    private Long centerId;
+    private Long managerId;
+    private String name;
+    private String address;
 }

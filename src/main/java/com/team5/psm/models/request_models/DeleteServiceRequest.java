@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ViewAllPetOfUserRequest {
-	private Long id;
+public class DeleteServiceRequest {
+    private Long serviceId;
 }

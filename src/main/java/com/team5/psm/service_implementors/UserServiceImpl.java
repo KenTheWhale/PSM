@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getUserbyAccountId(Long id) {
-		// TODO Auto-generated method stub
 		return userRepo.findByAccount_Id(id);
 	}
 
