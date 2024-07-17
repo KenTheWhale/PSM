@@ -11,14 +11,16 @@ import com.team5.psm.services.AccountService;
 
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
 import com.team5.psm.repositories.AccountRepo;
 
 import java.time.LocalDate;
 
+@Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService {
+public class AccountServiceImpl extends BaseServiceImpl implements AccountService {
 
 	private final AccountRepo accountRepo;
 	private final UserRepo userRepo;
@@ -134,9 +136,5 @@ public class AccountServiceImpl implements AccountService {
 		accountRepo.save(accountFromDb);
 
 		return "profile";
-	}
-
-	private boolean checkIfStringIsValid(String input) {
-		return input != null && !input.isEmpty();
 	}
 }
