@@ -28,9 +28,7 @@ public class PetServiceImpl implements PetService {
 
 	private final SpeciesRepo speciesRepo;
 
-
 	private final AccountRepo accountRepo;
-
 
 	@Override
 	public List<Pet> viewAllPetOfUser(ViewAllPetOfUserRequest request) {
@@ -54,7 +52,12 @@ public class PetServiceImpl implements PetService {
 
 		User user = userRepo.findByAccount_Id(accID);
 
-		Pet pet = Pet.builder().name(petName).description(description).species(species).user(user).build();
+		Pet pet = Pet.builder()
+				.name(petName)
+				.description(description)
+				.species(species)
+				.user(user)
+				.build();
 		petRepo.save(pet);
 		return "redirect:/pet";
 	}
