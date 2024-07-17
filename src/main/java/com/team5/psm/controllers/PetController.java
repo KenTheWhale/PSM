@@ -11,6 +11,7 @@ import com.team5.psm.consts.FooterHTML;
 import com.team5.psm.models.entity_models.Account;
 import com.team5.psm.models.entity_models.Pet;
 import com.team5.psm.models.request_models.AddPetRequest;
+import com.team5.psm.models.request_models.UpdatePetRequest;
 import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
 import com.team5.psm.services.PetService;
 
@@ -37,10 +38,10 @@ public class PetController {
 		List<Pet> petList = petService.viewAllPetOfUser(request);
 		model.addAttribute("petList", petList);
 
-		return "redirect:/pet";
+		return "pet";
 	}
 
-	@PostMapping("/pet")
+	@PostMapping("/addPet")
 	public String addPet(AddPetRequest request,Model model, HttpSession session) {
 		FooterHTML.setFooter(model);
 		Account account = (Account) session.getAttribute("account");
@@ -49,6 +50,17 @@ public class PetController {
 			return "login";
 		}
 		
-		return petService.AddPet(request,account.getId(), account.getUser().getId(), model);
+		return petService.addPet(request,account.getId(), account.getUser().getId(), model);
+	}
+	
+	@PostMapping("/updatePet")
+	public String updatePet(UpdatePetRequest request, Model model, HttpSession session) {
+		Account account = (Account) session.getAttribute("account");
+		if (account == null) {
+			model.addAttribute("error", "User not logged in");
+			return "login";
+		}
+		
+		return petService.updatePet(request, model);
 	}
 }
