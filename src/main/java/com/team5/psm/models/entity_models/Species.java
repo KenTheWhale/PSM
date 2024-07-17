@@ -6,34 +6,25 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @Table
-public class Account {
+public class Species {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
     @Column
-    private String avatar;
+    private String name;
 
-    @Column
-    private String background;
-
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @OneToMany(mappedBy = "specie")
+    private List<Pet> pets;
 
 }

@@ -12,28 +12,28 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table
-public class Account {
+public class Pet {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
+    private User owner;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
-    @Column
-    private String avatar;
+    @ManyToOne
+    @JoinColumn(name = "species_id")
+    private Species specie;
 
     @Column
-    private String background;
+    private String name;
 
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @Column
+    private String description;
+
+    @OneToOne(mappedBy = "pet")
+    private Booking book;
 
 }

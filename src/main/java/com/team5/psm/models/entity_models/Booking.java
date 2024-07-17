@@ -6,34 +6,37 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @Table
-public class Account {
+public class Booking {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
+    @OneToOne
+    @JoinColumn(name = "pet_id")
+    private Pet pet;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
-    @Column
-    private String avatar;
+    @ManyToMany
+    @JoinColumn(name = "service_id")
+    private List<Service> service;
 
     @Column
-    private String background;
+    private String content;
 
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @Column
+    private LocalDateTime created_date;
+
+    @OneToOne(mappedBy = "book")
+    private Feedback feedback;
 
 }

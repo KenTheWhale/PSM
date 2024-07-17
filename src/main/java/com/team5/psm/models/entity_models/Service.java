@@ -6,34 +6,39 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @Table
-public class Account {
+public class Service {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
+    @OneToOne
+    @JoinColumn(name = "status_id")
+    private Service_Status status;
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
-    @Column
-    private String avatar;
+    @ManyToOne
+    @JoinColumn(name = "center_id")
+    private Spa_Center center;
 
     @Column
-    private String background;
+    private String name;
 
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @Column
+    private String description;
+
+    @Column
+    private double price;
+
+    @ManyToMany(mappedBy = "service")
+    private List<Booking> bookings;
 
 }

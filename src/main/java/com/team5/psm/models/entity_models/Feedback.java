@@ -6,34 +6,32 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Entity
 @Table
-public class Account {
+public class Feedback {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
+    @OneToOne
+    @JoinColumn(name = "booking_id")
+    private Booking book;
 
     @Column
-    private String avatar;
+    private String content;
 
     @Column
-    private String background;
+    private LocalDateTime created_date;
 
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @Column
+    private boolean isReport;
 
 }

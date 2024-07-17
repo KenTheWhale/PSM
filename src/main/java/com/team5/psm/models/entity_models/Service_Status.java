@@ -12,28 +12,17 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table
-public class Account {
+public class Service_Status {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Long id;
 
-    @Column(nullable = false)
-    private String email;
-
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String role;
-
     @Column
-    private String avatar;
+    private String status;
 
-    @Column
-    private String background;
-
-    @OneToOne(mappedBy = "account")
-    private User user;
+    @OneToOne(mappedBy = "status")
+    private Service service;
 
 }
