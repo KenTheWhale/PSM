@@ -85,11 +85,15 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public void loadHomePage(Model model) {
-		serviceRepo.findTop3ByOrderByRatingDesc();
 		model.addAttribute("top3Services", serviceRepo.findTop3ByOrderByRatingDesc());
 		model.addAttribute("userCount", String.valueOf(userRepo.count()));
 		model.addAttribute("serviceCount", serviceRepo.count());
 		model.addAttribute("petCount", petRepo.count());
+	}
+
+	@Override
+	public void loadServicePage(Model model) {
+		model.addAttribute("serviceList", serviceRepo.findAll());
 	}		
 	
 }
