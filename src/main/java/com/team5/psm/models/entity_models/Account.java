@@ -27,6 +27,9 @@ public class Account {
     @Column(nullable = false)
     private String role;
 
+    @Column(nullable = false, columnDefinition = "VARCHAR(255) DEFAULT 'Active'")
+    private String status;
+
     @Column
     private String avatar;
 

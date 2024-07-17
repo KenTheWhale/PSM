@@ -27,7 +27,11 @@ public class Booking {
     private Pet pet;
 
     @ManyToMany
-    @JoinColumn(name = "service_id")
+    @JoinTable(
+            name = "booking_service",
+            joinColumns = @JoinColumn(name = "booking_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
     private List<Service> service;
 
     @Column

@@ -1,5 +1,6 @@
 package com.team5.psm.controllers;
 
+import com.team5.psm.services.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Controller
 @RequiredArgsConstructor
 public class PageElementController {
+	private final UserService userService;
 
 	@GetMapping("/")
 	public String home(Model model) {
@@ -52,5 +54,11 @@ public class PageElementController {
 	public String loadRegister(Model model) {
 		FooterHTML.setFooter(model);
 		return "register";
+	}
+
+	@GetMapping("/profile")
+	public String profile(Model model) {
+		FooterHTML.setFooter(model);
+		return userService.getUserProfile(model);
 	}
 }

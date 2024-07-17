@@ -35,10 +35,4 @@ public class CustomerController {
 		return accountService.logout(model);
 	}
 	
-	@GetMapping("/profile")
-	public String loadProfile(Model model) {
-		FooterHTML.setFooter(model);
-		return "profile";
-	}
-	
 }

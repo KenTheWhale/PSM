@@ -14,11 +14,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.ui.Model;
 
 import com.team5.psm.repositories.AccountRepo;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
-@Service
 @RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService {
 

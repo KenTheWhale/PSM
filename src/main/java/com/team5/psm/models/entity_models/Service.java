@@ -38,7 +38,11 @@ public class Service {
     @Column
     private double price;
 
-    @ManyToMany(mappedBy = "service")
-    private List<Booking> bookings;
-
+    @ManyToMany
+    @JoinTable(
+      name = "booking_service",
+      joinColumns = @JoinColumn(name = "booking_id"),
+      inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+    private List<Service> service;
 }
