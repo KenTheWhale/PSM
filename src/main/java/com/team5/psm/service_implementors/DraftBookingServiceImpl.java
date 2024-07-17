@@ -57,11 +57,10 @@ public class DraftBookingServiceImpl implements DraftBookingService {
         Pet pet = petRepo.findById(petId).orElse(null);
         Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
 
-        draftBooking = DraftBooking.builder()
-                                    .pet(pet)
-                                    .service(services)
-                                    .price(price)
-                                    .build();
+        draftBooking.setPet(pet);
+        draftBooking.setService(services);
+        draftBooking.setPrice(price);
+        
         model.addAttribute("draftBooking", draftBooking);
 
         draftBookingRepo.save(draftBooking);
