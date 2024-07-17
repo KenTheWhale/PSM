@@ -8,6 +8,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,6 +30,8 @@ public class Account {
     private String avatar;
 
     private String background;
+
+    private LocalDate createdAt;
     
     @ManyToOne
     @JoinColumn(name = "status_id")

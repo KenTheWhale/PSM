@@ -5,12 +5,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ChangePasswordRequest {
-
-    private String oldPassword;
+public class ForgetPasswordRequest {
+    private String email;
+    LocalDate createdAt;
     private String newPassword;
+    private String newPasswordConfirm;
 }

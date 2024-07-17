@@ -1,15 +1,12 @@
 package com.team5.psm.service_implementors;
 
 import com.team5.psm.models.entity_models.SpaCenter;
-import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.UpdateCenterProfileRequest;
 import com.team5.psm.repositories.SpaCenterRepo;
 import com.team5.psm.services.SpaCenterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
-
-import java.time.LocalDate;
 
 @Service
 @RequiredArgsConstructor

@@ -4,7 +4,7 @@ import com.team5.psm.consts.Role;
 import com.team5.psm.models.entity_models.Account;
 import com.team5.psm.models.entity_models.AccountStatus;
 import com.team5.psm.models.entity_models.User;
-import com.team5.psm.models.request_models.ChangePasswordRequest;
+import com.team5.psm.models.request_models.ForgetPasswordRequest;
 import com.team5.psm.models.request_models.LoginRequest;
 import com.team5.psm.models.request_models.RegisterRequest;
 import com.team5.psm.repositories.AccountStatusRepo;
@@ -115,35 +115,36 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
     }
 
 	@Override
-	public String changePassword(ChangePasswordRequest request, Model model) {
-		String oldPassword = request.getOldPassword();
+	public String forgetPassword(ForgetPasswordRequest request, Model model) {
+		String email = request.getEmail();
+		LocalDate createdAt = request.getCreatedAt();
 		String newPassword = request.getNewPassword();
+		String newPasswordConfirm = request.getNewPasswordConfirm();
 
-		if (!checkIfStringIsValid(oldPassword) || !checkIfStringIsValid(newPassword)) {
+		if (!checkIfStringIsValid(email)
+				|| !checkIfStringIsValid(newPassword)
+				|| !checkIfStringIsValid(newPasswordConfirm)
+				|| createdAt == null) {
 			model.addAttribute("error", "Please fill in all fields.");
-			// Change this to the correct page later
-			return "profile";
-		}
-
-		// Get account from session
-		Account accountFromSession = (Account) model.getAttribute("account");
-		if (accountFromSession == null) {
-			model.addAttribute("error", "Please login first.");
 			return "login";
 		}
 
-		String email = accountFromSession.getEmail();
-		Account accountFromDb = accountRepo.findByEmailAndPassword(email, oldPassword).orElse(null);
+		Account account = accountRepo.findByEmailAndCreatedAt(email, createdAt).orElse(null);
 
-		if (accountFromDb == null) {
-			model.addAttribute("error", "Old password is incorrect.");
-			return "profile";
+		if (account == null) {
+			model.addAttribute("error", "Account not found.");
+			return "login";
 		}
 
-		accountFromDb.setPassword(newPassword);
-		accountRepo.save(accountFromDb);
+		if (!newPassword.equals(newPasswordConfirm)) {
+			model.addAttribute("error", "Confirmed password does not match.");
+			return "login";
+		}
 
-		return "profile";
+		account.setPassword(newPassword);
+		accountRepo.save(account);
+
+		return "login";
 	}
 
 	private String changeAccountStatus(Long accountId, String status, Model model) {

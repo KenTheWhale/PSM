@@ -1,5 +1,6 @@
 package com.team5.psm.controllers;
 
+import com.team5.psm.models.request_models.ForgetPasswordRequest;
 import com.team5.psm.models.request_models.PaymentRequest;
 import com.team5.psm.services.AccountService;
 
@@ -52,5 +53,10 @@ public class CustomerController {
 		String receiptUrl = paymentService.checkout(request, model);
 
 		return "home";
+	}
+
+	@PostMapping("forget-password")
+	public String forgetPassword(ForgetPasswordRequest request, Model model) {
+		return accountService.forgetPassword(request, model);
 	}
 }
