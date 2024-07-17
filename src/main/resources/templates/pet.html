@@ -66,6 +66,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="mb-4">List of Pets</h2>
+                    <button type="button" class="btn btn-success mb-4" data-toggle="modal" data-target="#addPetModal">
+                        Add Pet
+                    </button>
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -79,8 +82,9 @@
                                 <td th:text="${pet.name}"></td>
                                 <td th:text="${pet.description}"></td>
                                 <td>
-                                    <!-- Update and delete actions can be added here -->
-                                    <a th:href="@{/updatePet(id=${pet.id})}" class="btn btn-primary">Update</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updatePetModal" th:data-id="${pet.id}" th:data-name="${pet.name}" th:data-description="${pet.description}">
+                                        Update
+                                    </button>
                                     <a th:href="@{/deletePet(id=${pet.id})}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
@@ -90,6 +94,67 @@
             </div>
         </div>
     </section>
+
+    <!-- Add Pet Modal -->
+    <div class="modal fade" id="addPetModal" tabindex="-1" role="dialog" aria-labelledby="addPetModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addPetModalLabel">Add Pet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/addPet}" method="post">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="petName">Pet Name</label>
+                            <input type="text" class="form-control" id="petName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea class="form-control" id="description" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Pet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Update Pet Modal -->
+    <div class="modal fade" id="updatePetModal" tabindex="-1" role="dialog" aria-labelledby="updatePetModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updatePetModalLabel">Update Pet</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form th:action="@{/updatePet}" method="post">
+                    <div class="modal-body">
+                        <input type="hidden" id="updatePetId" name="id">
+                        <div class="form-group">
+                            <label for="updatePetName">Pet Name</label>
+                            <input type="text" class="form-control" id="updatePetName" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="updateDescription">Description</label>
+                            <textarea class="form-control" id="updateDescription" name="description" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Pet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -148,5 +213,19 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULglMFL8YW4&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+
+    <script>
+        $('#updatePetModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); 
+            var petId = button.data('id');
+            var petName = button.data('name'); 
+            var description = button.data('description'); 
+
+            var modal = $(this);
+            modal.find('#updatePetId').val(petId);
+            modal.find('#updatePetName').val(petName);
+            modal.find('#updateDescription').val(description);
+        });
+    </script>
 </body>
 </html>
