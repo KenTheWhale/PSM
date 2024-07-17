@@ -11,6 +11,7 @@ import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.AddPetRequest;
 import com.team5.psm.models.request_models.UpdatePetRequest;
 import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
+import com.team5.psm.repositories.AccountRepo;
 import com.team5.psm.repositories.PetRepo;
 import com.team5.psm.repositories.SpeciesRepo;
 import com.team5.psm.repositories.UserRepo;
@@ -28,6 +29,7 @@ public class PetServiceImpl implements PetService {
 	private final SpeciesRepo speciesRepo;
 
 
+	private final AccountRepo accountRepo;
 
 
 	@Override
@@ -52,7 +54,12 @@ public class PetServiceImpl implements PetService {
 
 		User user = userRepo.findByAccount_Id(accID);
 
-		Pet pet = Pet.builder().name(petName).description(description).species(species).user(user).build();
+		Pet pet = Pet.builder()
+				.name(petName)
+				.description(description)
+				.species(species)
+				.user(user)
+				.build();
 		petRepo.save(pet);
 		return "redirect:/pet";
 	}
