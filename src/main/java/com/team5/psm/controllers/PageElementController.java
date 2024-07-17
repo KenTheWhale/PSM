@@ -53,4 +53,10 @@ public class PageElementController {
 		return "register";
 	}
 	
+	@GetMapping("/pet")
+	public String loadPet(Model model) {
+		FooterHTML.setFooter(model);
+		return "pet";
+	}
+	
 }
