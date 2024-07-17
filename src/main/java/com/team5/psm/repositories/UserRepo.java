@@ -6,4 +6,5 @@ import com.team5.psm.models.entity_models.User;
 
 public interface UserRepo extends JpaRepository<User, Long>{
 
+	User findByAccount_Id(Long id);
 }

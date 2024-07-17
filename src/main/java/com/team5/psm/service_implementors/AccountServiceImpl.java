@@ -6,6 +6,7 @@ import com.team5.psm.models.request_models.LoginRequest;
 import com.team5.psm.models.request_models.RegisterRequest;
 import com.team5.psm.services.AccountService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.ui.Model;
@@ -20,7 +21,7 @@ public class AccountServiceImpl implements AccountService {
 	private final AccountRepo accountRepository;
 
 	@Override
-	public String login(LoginRequest request, Model model) {
+	public String login(LoginRequest request, Model model, HttpSession session) {
 		String email = request.getEmail();
 		String password = request.getPassword();
 
@@ -37,6 +38,7 @@ public class AccountServiceImpl implements AccountService {
 		}
 
 		model.addAttribute("account", account);
+		session.setAttribute("account", account);
 		return "home";
 	}
 

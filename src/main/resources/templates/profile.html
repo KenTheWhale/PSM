@@ -86,31 +86,31 @@
 												<div class="col-md-6">
 													<div class="form-group">
 														<label class="label" for="name">Full Name</label>
-														<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+														<input type="text" class="form-control" name="name" id="name" placeholder="Name" th:value="${user.name}">
 													</div>
 												</div>
 												<div class="col-md-6"> 
 													<div class="form-group">
 														<label class="label" for="email">Email</label>
-														<input type="email" class="form-control" name="email" id="email" placeholder="Email">
+														<input type="email" class="form-control" name="email" id="email" placeholder="Email" th:value="${account.email}">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="phone">Phone</label>
-														<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone">
+														<input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" th:value="${user.phone}">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="dob">Day of birth</label>
-														<input type="text" class="form-control" name="dob" id="dob" placeholder="Day of birth">
+														<input type="text" class="form-control" name="dob" id="dob" placeholder="Day of birth" th:value="${user.dob}">
 													</div>
 												</div>
 												<div class="col-md-12">
 													<div class="form-group">
 														<label class="label" for="address">Address</label>
-														<input type="text" class="form-control" name="address" id="address" placeholder="Address">
+														<input type="text" class="form-control" name="address" id="address" placeholder="Address" th:value="${user.address}">
 													</div>
 												</div>
 												<div class="col-md-12">
