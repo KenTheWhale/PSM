@@ -111,7 +111,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
     @Override
     public String logout(Model model, HttpSession session) {
         session.invalidate();
-        return "";
+        return "redirect:/";
     }
 
 	@Override
