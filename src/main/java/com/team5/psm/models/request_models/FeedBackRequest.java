@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 public class FeedBackRequest {
-	private Long BookingStatusId;
-	private String Content;
+    private Long bookingId;
+    private String content;
 }
+

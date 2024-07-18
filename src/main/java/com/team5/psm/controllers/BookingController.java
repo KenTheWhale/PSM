@@ -3,6 +3,7 @@ package com.team5.psm.controllers;
 import com.team5.psm.consts.FooterHTML;
 import com.team5.psm.models.request_models.CancelBookingRequest;
 import com.team5.psm.models.request_models.CreateBookingRequest;
+import com.team5.psm.models.request_models.FeedBackRequest;
 import com.team5.psm.services.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -26,4 +27,10 @@ public class BookingController {
         FooterHTML.setFooter(model);
         return bookingService.cancelBooking(request, model);
     }
+    @PostMapping("makeFeedBack")
+    public String makeFeedBack(FeedBackRequest request, Model model) {
+        FooterHTML.setFooter(model);
+        return bookingService.makeFeedBack(request, model);
+    }
+
 }
