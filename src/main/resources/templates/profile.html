@@ -30,7 +30,7 @@
 						<a href="#"><span class="fa fa-paper-plane mr-1"></span>
 							petspa@gmail.com</a>
 					</p>
-          </div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -50,14 +50,16 @@
 					<li class="nav-item"><a href="home" class="nav-link">Home</a></li>
 					<li class="nav-item"><a href="vet" class="nav-link">Veterinarian</a></li>
 					<li class="nav-item"><a href="services" class="nav-link">Services</a></li>
-					<li class="nav-item" th:if="${account == null}"><a
+					<li class="nav-item" th:if="${session.account == null}"><a
 						href="login" class="nav-link">Login</a></li>
-					<li class="nav-item" th:if="${account == null}"><a
+					<li class="nav-item" th:if="${session.account == null}"><a
 						href="register" class="nav-link">Register</a></li>
-					<li class="nav-item active" th:if="${account != null}"><a
+					<li class="nav-item active" th:if="${session.account != null}"><a
 						href="profile" class="nav-link">Profile</a></li>
-					<li class="nav-item" th:if="${account != null}"><a href="pet"
-						class="nav-link">Pet</a></li>
+					<li class="nav-item" th:if="${session.account != null}"><a
+						href="pet" class="nav-link">Pet</a></li>
+					<li class="nav-item" th:if="${session.account != null}"><a
+						href="bookinghistory" class="nav-link">Booking History</a></li>
 				</ul>
 			</div>
 		</div>
@@ -108,7 +110,8 @@
 												<div class="form-group">
 													<label class="label" for="email">Email</label> <input
 														type="email" class="form-control" name="email" id="email"
-														placeholder="Email" th:value="${account.email}" readonly>
+														placeholder="Email" th:value="${session.account.email}"
+														readonly>
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -121,7 +124,9 @@
 											<div class="col-md-12">
 												<div class="form-group">
 													<label class="label" for="dob">Date of Birth</label> <input
-														type="date" class="form-control" name="dob" id="dob" placeholder="Date of Birth" th:value="${user.dob}" disabled>
+														type="date" class="form-control" name="dob" id="dob"
+														placeholder="Date of Birth" th:value="${user.dob}"
+														disabled>
 												</div>
 											</div>
 											<div class="col-md-12">
@@ -163,7 +168,7 @@
 			<div class="row">
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 					<h2 class="footer-heading">PetSpa</h2>
-					<p th:text="${description}"></p>
+					<p th:text="${description}" />
 				</div>
 				<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
 					<h2 class="footer-heading">Quick Links</h2>
@@ -173,14 +178,28 @@
 						<li><a href="#" class="py-2 d-block">Services</a></li>
 					</ul>
 				</div>
+				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+					<h2 class="footer-heading">Have a Questions?</h2>
+					<div class="block-23 mb-3">
+						<ul>
+							<li><span class="icon fa fa-map"></span><span class="text"
+								th:text="${address}"></span></li>
+							<li><a href="#"><span class="icon fa fa-phone"></span><span
+									class="text" th:text="${phone}"></span></a></li>
+							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
+									class="text" th:text="${email}"></span></a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 			<div class="row mt-5">
 				<div class="col-md-12 text-center">
+
 					<p class="copyright">
 						Copyright &copy;
 						<script>
-                        document.write(new Date().getFullYear());
-                    </script>
+							document.write(new Date().getFullYear());
+						</script>
 						All rights reserved | This template is made with <i
 							class="fa fa-heart" aria-hidden="true"></i> by <a href=""
 							target="_blank">Pet Spa</a>

@@ -30,6 +30,7 @@ public class DraftBooking {
 	@ManyToOne
 	@JoinColumn(name = "service_id")
 	private Services services;
+
 	
 	private String content;
 	
