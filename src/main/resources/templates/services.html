@@ -153,26 +153,26 @@
 	</section>
 
 	<section class="ftco-section bg-light">
-		<div class="container">
-			<div class="row mb-5 pb-5">
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate" th:each="service : ${serviceList}">
-					<div class="d-block services text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-blind"></span>
-						</div>
-						<div class="media-body p-4">
-							<h3 class="heading" th:text="${service.name}"></h3>
-							<p th:text="${service.description}"></p>
-							<a href="#"
-								class="btn-custom d-flex align-items-center justify-content-center"><span
-								class="fa fa-chevron-right"></span><i class="sr-only">Read
-									more</i></a>
-						</div>
+	<div class="container">
+		<div class="row mb-5 pb-5">
+			<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate" th:each="service, iterStat : ${serviceList}">
+				<div class="d-block services text-center">
+					<div class="icon d-flex align-items-center justify-content-center">
+						<span class="flaticon-blind"></span>
+					</div>
+					<div class="media-body p-4">
+						<h3 class="heading" th:text="${service.name}"></h3>
+						<p th:text="${service.description}"></p>
+						<a href="#" class="btn-custom d-flex align-items-center justify-content-center">
+							<span class="fa fa-chevron-right"></span>
+							<i class="sr-only">Read more</i>
+						</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</div>
+</section>
 
 	<footer class="footer">
 		<div class="container">
