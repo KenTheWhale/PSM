@@ -50,8 +50,6 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 			model.addAttribute("error", "Account is banned.");
 			return "login";
 		}
-
-		model.addAttribute("account", account);
 		session.setAttribute("account", account);
 		return "redirect:/home";
 	}
@@ -112,9 +110,8 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 
     @Override
     public String logout(Model model, HttpSession session) {
-        model.addAttribute("account", null);
         session.invalidate();
-        return "home";
+        return "";
     }
 
 	@Override

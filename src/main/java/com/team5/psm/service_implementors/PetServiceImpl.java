@@ -12,7 +12,6 @@ import com.team5.psm.models.request_models.AddPetRequest;
 import com.team5.psm.models.request_models.DeletePetRequest;
 import com.team5.psm.models.request_models.UpdatePetRequest;
 import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
-import com.team5.psm.repositories.AccountRepo;
 import com.team5.psm.repositories.PetRepo;
 import com.team5.psm.repositories.SpeciesRepo;
 import com.team5.psm.repositories.UserRepo;
@@ -28,10 +27,6 @@ public class PetServiceImpl implements PetService {
 	private final UserRepo userRepo;
 
 	private final SpeciesRepo speciesRepo;
-
-
-	private final AccountRepo accountRepo;
-
 
 	@Override
 	public List<Pet> viewAllPetOfUser(ViewAllPetOfUserRequest request) {
