@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 
 import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.UpdateProfileRequest;
+import com.team5.psm.models.request_models.ViewBookingHistoryRequest;
 import com.team5.psm.models.request_models.ViewProfileUserRequest;
 
 @Service
@@ -20,5 +21,7 @@ public interface UserService {
 	void loadHomePage(Model model);
 	
 	void loadServicePage(Model model);
+	
+	String ViewBookingHistory(ViewBookingHistoryRequest request, Model model);
 	
 }
