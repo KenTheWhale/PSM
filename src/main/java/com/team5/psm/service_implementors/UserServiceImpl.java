@@ -18,7 +18,6 @@ import com.team5.psm.repositories.ServiceRepo;
 import com.team5.psm.repositories.UserRepo;
 import com.team5.psm.services.UserService;
 
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Service

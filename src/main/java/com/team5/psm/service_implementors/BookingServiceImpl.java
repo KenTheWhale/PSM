@@ -22,7 +22,7 @@ public class BookingServiceImpl implements BookingService {
         DraftBooking draftBooking = draftBookingRepo.findById(request.getDraftBookingId()).orElse(null);
         Booking booking = Booking.builder()
                 .pet(draftBooking.getPet())
-                .services(draftBooking.getServices())
+                .servicePlan(draftBooking.getServicePlan())
                 .isFeedbacked(false)
                 .createDate(LocalDate.now())
                 .price(draftBooking.getPrice())

@@ -10,7 +10,6 @@ import com.team5.psm.models.request_models.UpdateProfileRequest;
 import com.team5.psm.models.request_models.ViewBookingHistoryRequest;
 import com.team5.psm.models.request_models.ViewProfileUserRequest;
 
-import jakarta.servlet.http.HttpSession;
 
 @Service
 public interface UserService {
