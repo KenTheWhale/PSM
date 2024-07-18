@@ -1,6 +1,7 @@
 package com.team5.psm.controllers;
 
 import com.team5.psm.consts.FooterHTML;
+import com.team5.psm.models.request_models.CancelBookingRequest;
 import com.team5.psm.models.request_models.CreateBookingRequest;
 import com.team5.psm.services.BookingService;
 import lombok.RequiredArgsConstructor;
@@ -20,4 +21,9 @@ public class BookingController {
         return bookingService.createBooking(request, model);
     }
 
+    @PostMapping("/cancelBooking")
+    public String createBooking(CancelBookingRequest request, Model model) {
+        FooterHTML.setFooter(model);
+        return bookingService.cancelBooking(request, model);
+    }
 }
