@@ -4,17 +4,13 @@ package com.team5.psm.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.team5.psm.consts.FooterHTML;
 import com.team5.psm.models.entity_models.Account;
-import com.team5.psm.models.entity_models.Pet;
-import com.team5.psm.models.entity_models.Species;
 import com.team5.psm.models.request_models.AddPetRequest;
 import com.team5.psm.models.request_models.DeletePetRequest;
 import com.team5.psm.models.request_models.UpdatePetRequest;
-import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
 import com.team5.psm.repositories.SpeciesRepo;
 import com.team5.psm.services.PetService;
 
