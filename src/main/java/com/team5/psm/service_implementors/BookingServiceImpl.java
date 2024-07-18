@@ -23,6 +23,7 @@ public class BookingServiceImpl implements BookingService {
         Booking booking = Booking.builder()
                 .pet(draftBooking.getPet())
                 .services(draftBooking.getServices())
+                .isFeedbacked(false)
                 .createDate(LocalDate.now())
                 .price(draftBooking.getPrice())
                 .build();
