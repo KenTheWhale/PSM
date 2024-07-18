@@ -111,8 +111,9 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 	}
 
     @Override
-    public String logout(Model model) {
+    public String logout(Model model, HttpSession session) {
         model.addAttribute("account", null);
+        session.invalidate();
         return "home";
     }
 

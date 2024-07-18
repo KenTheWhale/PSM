@@ -54,8 +54,8 @@ public class CustomerController {
 	}
 
 	@PostMapping("/logout")
-	public String logout(Model model) {
-		return accountService.logout(model);
+	public String logout(Model model, HttpSession session) {
+		return accountService.logout(model, session);
 	}
 
 	@PostMapping("checkout")

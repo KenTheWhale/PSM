@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public interface AccountService {
     String login(LoginRequest request, Model model, HttpSession session);
     String register(RegisterRequest request, Model model);
-    String logout(Model model);
+    String logout(Model model, HttpSession session);
     String forgetPassword(ForgetPasswordRequest request, Model model);
     String banAccount(Long accountId, Model model);
     String unbanAccount(Long accountId, Model model);
