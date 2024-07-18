@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.team5.psm.models.entity_models.Account;
 import com.team5.psm.models.entity_models.Booking;
 import com.team5.psm.models.entity_models.User;
 import com.team5.psm.models.request_models.UpdateProfileRequest;
@@ -17,6 +18,7 @@ import com.team5.psm.repositories.ServiceRepo;
 import com.team5.psm.repositories.UserRepo;
 import com.team5.psm.services.UserService;
 
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -99,6 +101,12 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
+	public void loadPricing(Long id, Model model, Account account) {
+		model.addAttribute("user", userRepo.findById(account.getUser().getId()).orElse(null));
+		model.addAttribute("service", serviceRepo.findById(id).orElse(null));
+	}
+	
+	@Override
 	public String ViewBookingHistory(ViewBookingHistoryRequest request, Model model) {
 		// TODO Auto-generated method stub
 		List<Booking> bookingList = bookingRepo.findAllByPet_User_Account_IdOrderByCreateDateAsc(request.getAccountId());
@@ -109,5 +117,7 @@ public class UserServiceImpl implements UserService {
 		}
 		model.addAttribute("bookingList", bookingList);
 		return "bookinghistory";
-	}		
+	}
+
+			
 }

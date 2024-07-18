@@ -13,11 +13,7 @@ public class CreateDraftBookingRequest {
 
     private Long petId;
 
-    private String spaName;
-
-    private String serviceName;
-
-    private float price;
+    private Long planId;
 
 
 }

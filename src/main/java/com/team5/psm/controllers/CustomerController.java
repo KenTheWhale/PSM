@@ -159,8 +159,16 @@ public class CustomerController {
 	
 	@GetMapping("/serviceDetail")
 	public String loadServiceDetail(@RequestParam("id") Long id, Model model) {
+		FooterHTML.setFooter(model);
 	    userService.loadDetailService(id, model);
 	    return "serviceDetail";
+	}
+	
+	@PostMapping("/pricing")
+	public String loadPricing(@RequestParam("id") Long id, Model model, HttpSession session) {
+		FooterHTML.setFooter(model);
+		userService.loadPricing(id, model, (Account) session.getAttribute("account"));
+		return "pricing";
 	}
 
 
