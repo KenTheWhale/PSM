@@ -95,10 +95,14 @@
 						<div class="media-body">
 							<h3 class="heading" th:text="${service.name}"></h3>
 							<p th:text="${service.description}"></p>
-							<a href="#"
-								class="btn-custom d-flex align-items-center justify-content-center"><span
-								class="fa fa-chevron-right"></span><i class="sr-only">Read
-									more</i></a>
+							<form th:action="@{/serviceDetail}" method="get">
+								<input type="hidden" th:value="${service.id}" name="id" />
+								<button type="submit"
+									class="btn-custom d-flex align-items-center justify-content-center">
+									<span class="fa fa-chevron-right"></span> <i class="sr-only">Read
+										more</i>
+								</button>
+							</form>
 						</div>
 					</div>
 				</div>
