@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 @RequiredArgsConstructor
@@ -27,9 +28,11 @@ public class BookingController {
         FooterHTML.setFooter(model);
         return bookingService.cancelBooking(request, model);
     }
-    @PostMapping("makeFeedBack")
-    public String makeFeedBack(FeedBackRequest request, Model model) {
+    @PostMapping("/makeFeedBack")
+    public String makeFeedBack(@RequestBody FeedBackRequest request, Model model) {
         FooterHTML.setFooter(model);
+        System.out.println(request.getBookingId());
+        System.out.println(request.getContent());
         return bookingService.makeFeedBack(request, model);
     }
 

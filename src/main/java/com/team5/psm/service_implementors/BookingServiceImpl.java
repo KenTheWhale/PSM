@@ -106,7 +106,7 @@ public class BookingServiceImpl implements BookingService {
         bookingRepo.save(booking);
 
         model.addAttribute("msg", "Feedback submitted successfully");
-        return "feedbackSuccess";
+        return "bookinghistory";
     }
 
 

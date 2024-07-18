@@ -102,7 +102,7 @@
 							<tr th:each="booking : ${bookingList}">
 								<td th:text="${booking.id}"></td>
 								<td th:text="${booking.pet.name}"></td>
-								<td th:text="${booking.services.name}"></td>
+								<td th:text="${booking.servicePlan.name}"></td>
 								<td
 									th:text="${#temporals.format(booking.createDate, 'yyyy-MM-dd')}"></td>
 								<td th:text="${booking.bookingStatus.status}"></td>
@@ -113,9 +113,12 @@
 									<button
 										th:if="${!booking.isFeedbacked && booking.bookingStatus.status == 'finished'}"
 										th:attr="data-bookingId=${booking.id}" class="btn btn-primary"
-										onclick="openFeedbackModal(this)">FeedBack</button>
+										onclick="openFeedbackModal(this)">
+										<span th:if="${!booking.isFeedbacked}">Feedback</span> <span
+											th:if="${booking.isFeedbacked}">Thank for your
+											feedback</span>
+									</button>
 								</td>
-
 							</tr>
 						</tbody>
 					</table>
@@ -250,13 +253,14 @@
 		function openFeedbackModal(button) {
 			var bookingId = $(button).data('bookingid');
 			$('#feedbackBookingId').val(bookingId);
-			window.alert(bookingId);
 			$('#feedbackModal').modal('show');
+
 		}
 
 		function submitFeedback() {
 		    var bookingId = $('#feedbackBookingId').val();
 		    var content = $('#feedbackContent').val();
+
 		    $.ajax({
 		        url: '/makeFeedBack',
 		        type: 'POST',
@@ -266,7 +270,11 @@
 		        }),
 		        contentType: 'application/json',
 		        success: function(response) {
-		            window.location.href = '/bookinghistory';
+		            $('#feedbackModal').modal('hide');
+		            $('[data-bookingId="' + bookingId + '"]')
+		                .text('Thank for your feedback')
+		                .prop('disabled', true);
+		            alert("Feedback submitted successfully!");
 		        },
 		        error: function(error) {
 		            console.log(error);
@@ -274,7 +282,6 @@
 		        }
 		    });
 		}
-
 	</script>
 
 </body>
