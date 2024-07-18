@@ -22,6 +22,8 @@ public interface UserService {
 	
 	void loadServicePage(Model model);
 	
+	void loadDetailService(Long id, Model model);
+ 
 	String ViewBookingHistory(ViewBookingHistoryRequest request, Model model);
 	
 }

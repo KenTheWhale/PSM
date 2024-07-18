@@ -94,6 +94,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void loadDetailService(Long id, Model model) {
+		model.addAttribute("service", serviceRepo.findById(id).orElse(null));
+	}
+	
+	@Override
 	public String ViewBookingHistory(ViewBookingHistoryRequest request, Model model) {
 		// TODO Auto-generated method stub
 		List<Booking> bookingList = bookingRepo.findAllByPet_User_Account_IdOrderByCreateDateAsc(request.getAccountId());

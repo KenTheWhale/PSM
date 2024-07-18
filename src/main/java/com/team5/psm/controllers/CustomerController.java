@@ -28,6 +28,7 @@ import com.team5.psm.services.PaymentService;
 import com.team5.psm.services.PetService;
 import com.team5.psm.services.UserService;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 
@@ -154,6 +155,12 @@ public class CustomerController {
 
 	    model.addAttribute("bookingList", bookingList);
 	    return userService.ViewBookingHistory(request, model);
+	}
+	
+	@GetMapping("/serviceDetail")
+	public String loadServiceDetail(@RequestParam("id") Long id, Model model) {
+	    userService.loadDetailService(id, model);
+	    return "serviceDetail";
 	}
 
 
