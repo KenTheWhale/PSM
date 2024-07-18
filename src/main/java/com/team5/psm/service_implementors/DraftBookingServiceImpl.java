@@ -27,22 +27,22 @@ public class DraftBookingServiceImpl implements DraftBookingService {
 
     @Override
     public String createDraftBooking(CreateDraftBookingRequest request, Model model) {
-        Long petId = request.getPetId();
-        String spaName = request.getSpaName();
-        String serviceName = request.getServiceName();
-        float price = request.getPrice();
-
-        Pet pet = petRepo.findById(petId).orElse(null);
-        Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
-
-        DraftBooking draftBooking = DraftBooking.builder()
-                                                .pet(pet)
-                                                .services(services)
-                                                .price(price)
-                                                .build();
-        model.addAttribute("draftBooking", draftBooking);
-
-        draftBookingRepo.save(draftBooking);
+//        Long petId = request.getPetId();
+//        String spaName = request.getSpaName();
+//        String serviceName = request.getServiceName();
+//        float price = request.getPrice();
+//
+//        Pet pet = petRepo.findById(petId).orElse(null);
+//        Services services = servicesRepo.findByNameAndSpaCenter(serviceName, spaCenterRepo.findByName(spaName).orElse(null)).orElse(null);
+//
+//        DraftBooking draftBooking = DraftBooking.builder()
+//                                                .pet(pet)
+//                                                .services(services)
+//                                                .price(price)
+//                                                .build();
+//        model.addAttribute("draftBooking", draftBooking);
+//
+//        draftBookingRepo.save(draftBooking);
         return "home";
     }
 
