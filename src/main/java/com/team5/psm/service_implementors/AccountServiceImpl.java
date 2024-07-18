@@ -53,7 +53,7 @@ public class AccountServiceImpl extends BaseServiceImpl implements AccountServic
 
 		model.addAttribute("account", account);
 		session.setAttribute("account", account);
-		return "home";
+		return "redirect:/home";
 	}
 
 	@Override
