@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.team5.psm.models.entity_models.Services;
 import com.team5.psm.models.entity_models.User;
 import com.team5.psm.repositories.PetRepo;
 import com.team5.psm.repositories.ServiceRepo;
@@ -94,6 +95,11 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public void loadServicePage(Model model) {
 		model.addAttribute("serviceList", serviceRepo.findAll());
+	}
+
+	@Override
+	public void loadDetailService(Long id, Model model) {
+		model.addAttribute("service", serviceRepo.findById(id).orElse(null));
 	}		
 	
 }

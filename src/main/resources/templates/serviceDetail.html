@@ -5,24 +5,17 @@
 <meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <link
 	href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
 	rel="stylesheet">
-
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-
 <link rel="stylesheet" href="css/animate.css">
-
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
 <link rel="stylesheet" href="css/magnific-popup.css">
-
-
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="css/jquery.timepicker.css">
-
 <link rel="stylesheet" href="css/flaticon.css">
 <link rel="stylesheet" href="css/style.css">
 </head>
@@ -33,12 +26,11 @@
 			<div class="row">
 				<div class="col-md-6 d-flex align-items-center">
 					<p class="mb-0 phone pl-md-2">
-						<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>
-							(+84)989575268</a> <a href="#"><span
-							class="fa fa-paper-plane mr-1"></span> petspa@gmail.com</a>
+						<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span>(+84)989575268</a>
+						<a href="#"><span class="fa fa-paper-plane mr-1"></span>
+							petspa@gmail.com</a>
 					</p>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -80,111 +72,83 @@
 			<div class="row no-gutters slider-text align-items-end">
 				<div class="col-md-9 ftco-animate pb-5">
 					<p class="breadcrumbs mb-2">
-						<span class="mr-2"><a href="home">Home <i
+						<span class="mr-2"><a href="home">Home<i
 								class="ion-ios-arrow-forward"></i></a></span>
 					</p>
-					<h1 class="mb-0 bread">Services</h1>
+					<h1 class="mb-0 bread">Service Detail</h1>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="ftco-section ftco-no-pt ftco-no-pb">
-		<div class="container">
-			<div class="row d-flex no-gutters">
-				<div class="col-md-5 d-flex">
-					<div
-						class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-						style="background-image: url(images/about-1.jpg);"></div>
-				</div>
-				<div class="col-md-7 pl-md-5 py-md-5">
-					<div class="heading-section pt-md-5">
-						<h2 class="mb-4">Why Choose Us?</h2>
-					</div>
-					<div class="row">
-						<div class="col-md-6 services-2 w-100 d-flex">
-							<div
-								class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-stethoscope"></span>
-							</div>
-							<div class="text pl-3">
-								<h4>Care Advices</h4>
-								<p>Far far away, behind the word mountains, far from the
-									countries.</p>
-							</div>
-						</div>
-						<div class="col-md-6 services-2 w-100 d-flex">
-							<div
-								class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-customer-service"></span>
-							</div>
-							<div class="text pl-3">
-								<h4>Customer Supports</h4>
-								<p>Far far away, behind the word mountains, far from the
-									countries.</p>
-							</div>
-						</div>
-						<div class="col-md-6 services-2 w-100 d-flex">
-							<div
-								class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-emergency-call"></span>
-							</div>
-							<div class="text pl-3">
-								<h4>Emergency Services</h4>
-								<p>Far far away, behind the word mountains, far from the
-									countries.</p>
-							</div>
-						</div>
-						<div class="col-md-6 services-2 w-100 d-flex">
-							<div
-								class="icon d-flex align-items-center justify-content-center">
-								<span class="flaticon-veterinarian"></span>
-							</div>
-							<div class="text pl-3">
-								<h4>Veterinary Help</h4>
-								<p>Far far away, behind the word mountains, far from the
-									countries.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
 	<section class="ftco-section bg-light">
 		<div class="container">
-			<div class="row mb-5 pb-5">
-				<div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate"
-					th:each="service : ${serviceList}">
-					<div class="mt-5 mb-5 d-block services text-center">
-						<div class="icon d-flex align-items-center justify-content-center">
-							<span class="flaticon-blind"></span>
-						</div>
-						<div class="media-body p-4">
-							<h3 class="heading" th:text="${service.name}"></h3>
-							<p th:text="${service.description}"></p>
-							<form th:action="@{/serviceDetail}" method="get">
-								<input type="hidden" th:value="${service.id}" name="id" />
-								<button type="submit"
-									class="btn-custom d-flex align-items-center justify-content-center">
-									<span class="fa fa-chevron-right"></span> <i class="sr-only">Read
-										more</i>
-								</button>
-							</form>
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Service Detail</h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-12">
+					<div class="wrapper">
+						<div class="row no-gutters">
+							<div class="col-md-7">
+								<div class="contact-wrap w-100 p-md-5 p-4">
+									<form method="POST" id="contactForm" name="contactForm"
+										class="contactForm">
+										<div class="row">
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="name">Name</label> <input
+														type="text" class="form-control" name="name" id="name"
+														placeholder="Name" th:value="${service.name}">
+												</div>
+											</div>
+											<div class="col-md-6">
+												<div class="form-group">
+													<label class="label" for="price">Price</label> <input
+														type="text" class="form-control" name="price" id="price"
+														th:value="${service.price}">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="rating">Rating</label> <input
+														type="text" class="form-control" name="rating" id="rating"
+														th:value="${service.rating}">
+												</div>
+											</div>
+											<div class="col-md-12">
+												<div class="form-group">
+													<label class="label" for="description">Description</label>
+													<textarea class="form-control" name="description"
+														id="description" rows="4" th:text="${service.description}"></textarea>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-md-5 d-flex align-items-stretch">
+								<div class="info-wrap w-100 p-5 img"
+									style="background-image: url(images/img.jpg);"></div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+
+	<div id="map" class="map"></div>
 
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 					<h2 class="footer-heading">PetSpa</h2>
-					<p th:text="${description}" />
+					<p th:text="${description}"></p>
 				</div>
 				<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
 					<h2 class="footer-heading">Quick Links</h2>
@@ -194,28 +158,14 @@
 						<li><a href="#" class="py-2 d-block">Services</a></li>
 					</ul>
 				</div>
-				<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-					<h2 class="footer-heading">Have a Questions?</h2>
-					<div class="block-23 mb-3">
-						<ul>
-							<li><span class="icon fa fa-map"></span><span class="text"
-								th:text="${address}"></span></li>
-							<li><a href="#"><span class="icon fa fa-phone"></span><span
-									class="text" th:text="${phone}"></span></a></li>
-							<li><a href="#"><span class="icon fa fa-paper-plane"></span><span
-									class="text" th:text="${email}"></span></a></li>
-						</ul>
-					</div>
-				</div>
 			</div>
 			<div class="row mt-5">
 				<div class="col-md-12 text-center">
-
 					<p class="copyright">
 						Copyright &copy;
 						<script>
-							document.write(new Date().getFullYear());
-						</script>
+                        document.write(new Date().getFullYear());
+                    </script>
 						All rights reserved | This template is made with <i
 							class="fa fa-heart" aria-hidden="true"></i> by <a href=""
 							target="_blank">Pet Spa</a>
@@ -225,18 +175,14 @@
 		</div>
 	</footer>
 
-
-
-
-	<!-- loader -->
 	<div id="ftco-loader" class="show fullscreen">
 		<svg class="circular" width="48px" height="48px">
-			<circle class="path-bg" cx="24" cy="24" r="22" fill="none"
+        <circle class="path-bg" cx="24" cy="24" r="22" fill="none"
 				stroke-width="4" stroke="#eeeeee" />
-			<circle class="path" cx="24" cy="24" r="22" fill="none"
-				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" /></svg>
+        <circle class="path" cx="24" cy="24" r="22" fill="none"
+				stroke-width="4" stroke-miterlimit="10" stroke="#F96D00" />
+    </svg>
 	</div>
-
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -251,11 +197,30 @@
 	<script src="js/owl.carousel.min.js"></script>
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
-	<script
-		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
 
+	<script>
+function toggleEdit() {
+    const inputs = document.querySelectorAll('.form-control:not(#email)');
+    const editButton = document.getElementById('editButton');
+    const submitButton = document.getElementById('submitButton');
+
+    inputs.forEach(input => {
+        input.disabled = !input.disabled;
+    });
+
+    if (editButton.value === "Edit Profile") {
+        editButton.value = "Cancel";
+        submitButton.style.display = "inline-block";
+    } else {
+        editButton.value = "Edit Profile";
+        submitButton.style.display = "none";
+        inputs.forEach(input => {
+            input.disabled = true;
+        });
+    }
+}
+</script>
 
 </body>
 </html>

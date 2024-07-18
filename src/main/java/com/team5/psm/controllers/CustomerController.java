@@ -12,6 +12,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import com.team5.psm.consts.FooterHTML;
 import com.team5.psm.models.entity_models.Account;
@@ -24,6 +25,7 @@ import com.team5.psm.models.request_models.ViewAllPetOfUserRequest;
 import com.team5.psm.models.request_models.ViewProfileUserRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequiredArgsConstructor
@@ -93,6 +95,12 @@ public class CustomerController {
 		model.addAttribute("petList", petList);
 
 		return "redirect:/pet";
+	}
+	
+	@GetMapping("/serviceDetail")
+	public String loadServiceDetail(@RequestParam("id") Long id, Model model) {
+	    userService.loadDetailService(id, model);
+	    return "serviceDetail";
 	}
 
 	
