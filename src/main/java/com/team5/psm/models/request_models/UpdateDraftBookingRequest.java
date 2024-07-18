@@ -14,11 +14,7 @@ public class UpdateDraftBookingRequest {
     private Long id;
 
     private Long petId;
-
-    private String spaName;
-
-    private String serviceName;
-
-    private float price;
+    
+    private Long planId;
 
 }

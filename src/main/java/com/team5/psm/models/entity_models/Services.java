@@ -44,15 +44,6 @@ public class Services {
 	
 	private Integer rating;
 	
-	@OneToMany(mappedBy = "services")
-	@ToString.Exclude
-	@EqualsAndHashCode.Exclude
-	private List<Booking> bookings;
-	
-	@OneToMany(mappedBy = "services")
-	@ToString.Exclude
-	@EqualsAndHashCode.Exclude
-	private List<DraftBooking> drafts;
 	
 	@OneToMany(mappedBy = "services")
 	@ToString.Exclude

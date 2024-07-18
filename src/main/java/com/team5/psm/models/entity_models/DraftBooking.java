@@ -28,8 +28,8 @@ public class DraftBooking {
 	private Pet pet;
 	
 	@ManyToOne
-	@JoinColumn(name = "service_id")
-	private Services services;
+	@JoinColumn(name = "plan_id")
+	private ServicePlan servicePlan;
 
 	
 	private String content;
